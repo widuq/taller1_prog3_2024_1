@@ -8,7 +8,7 @@ public class Cliente {
     private String direccion;
     private String telefono;
 
-
+// prueba githab
     public Cliente(java.lang.String nombre, java.lang.String apellido, java.lang.String identificacion, java.lang.String direccion, java.lang.String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
