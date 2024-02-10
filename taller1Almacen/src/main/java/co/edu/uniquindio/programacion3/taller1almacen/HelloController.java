@@ -62,14 +62,22 @@ public class HelloController {
         //String texto = Cliente.getText();
        // labelDatosPrueba.setText(textoNombre);
         String textoEmail ="";
+        String textoFechaNacimiento ="";
+        String textoNit = "";
 
         if (clienteNatural.isSelected()) {
             textoEmail = emailCliente.getText();
+            textoFechaNacimiento = nacimientoCliente.getText();
+
+        }
+        if (clienteJuridico.isSelected()){
+            textoNit = nitCliente.getText();
         }
         labePrueba.setText(textoNombre);
         labelDatosPrueba.setText("bienvenido: "+textoNombre+"\n"+textoApellido+"\n"+textoId+"\n"+
-                textoDireccion+"\n"+textoTelefono+"\n"+textoEmail);
+                textoDireccion+"\n"+textoTelefono+"\n"+textoEmail+"\n"+textoFechaNacimiento+"\n"+textoNit);
 
+        Cliente cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
     }
 
 
