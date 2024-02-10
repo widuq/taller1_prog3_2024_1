@@ -65,8 +65,7 @@ public class HelloController {
         String textoId = idCliente.getText();
         String textoDireccion = direccionCliente.getText();
         String textoTelefono = telefonoCliente.getText();
-        //String texto = Cliente.getText();
-       // labelDatosPrueba.setText(textoNombre);
+        //Obtener datos de las clases hijas de cliente:
         String textoEmail ="";
         String textoFechaNacimiento ="";
         String textoNit = "";
