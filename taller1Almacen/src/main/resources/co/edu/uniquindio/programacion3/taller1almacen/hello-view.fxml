@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
    <children>
       <VBox layoutX="-78.0" layoutY="222.0" prefHeight="200.0" prefWidth="100.0" />
       <TabPane layoutX="-1.0" layoutY="-3.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
@@ -38,6 +38,7 @@
                         <TextField fx:id="nitCliente" layoutX="61.0" layoutY="273.0" />
                         <Button fx:id="btnRegistrarCliente" layoutX="274.0" layoutY="313.0" mnemonicParsing="false" onAction="#hacerClick" text="Registrar Cliente" />
                         <Label fx:id="labePrueba" layoutX="422.0" layoutY="317.0" text="Pruebas" />
+                        <Label fx:id="labelDatosPrueba" layoutX="273.0" layoutY="30.0" text="Label" />
                      </children>
                   </AnchorPane>
             </content>
