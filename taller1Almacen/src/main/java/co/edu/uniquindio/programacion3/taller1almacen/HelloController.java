@@ -8,13 +8,13 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
+import java.time.LocalDate;
+
 
 public class HelloController {
     @FXML
     private Label welcomeText;
 
-    @FXML
-    private Label labePrueba;
     @FXML
     private Label labelDatosPrueba;
 
@@ -35,7 +35,13 @@ public class HelloController {
     private TextField emailCliente;
 
     @FXML
-    private TextField nacimientoCliente;
+    private TextField diaNacimientoCliente;
+
+    @FXML
+    private TextField mesNacimientoCliente;
+
+    @FXML
+    private TextField yearNacimientoCliente;
 
     @FXML
     private TextField nitCliente;
@@ -64,20 +70,34 @@ public class HelloController {
         String textoEmail ="";
         String textoFechaNacimiento ="";
         String textoNit = "";
+        LocalDate fechaNacimiento;
+        String textoDiaNacimiento ="";
+        String textoMesNacimiento ="";
+        String textoYearNacimiento ="";
+
+        //Cliente cliente = null;
 
         if (clienteNatural.isSelected()) {
             textoEmail = emailCliente.getText();
-            textoFechaNacimiento = nacimientoCliente.getText();
+            textoDiaNacimiento = diaNacimientoCliente.getText();
+            textoMesNacimiento = mesNacimientoCliente.getText();
+            textoYearNacimiento = yearNacimientoCliente.getText();
+            fechaNacimiento = LocalDate.of(Integer.parseInt(textoYearNacimiento),
+                    Integer.parseInt(textoMesNacimiento),
+                    Integer.parseInt(textoDiaNacimiento));
+            Cliente cliente = new ClienteNatural(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,
+                    textoEmail,fechaNacimiento);
 
         }
         if (clienteJuridico.isSelected()){
             textoNit = nitCliente.getText();
+            Cliente cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
         }
-        labePrueba.setText(textoNombre);
+
         labelDatosPrueba.setText("bienvenido: "+textoNombre+"\n"+textoApellido+"\n"+textoId+"\n"+
                 textoDireccion+"\n"+textoTelefono+"\n"+textoEmail+"\n"+textoFechaNacimiento+"\n"+textoNit);
 
-        Cliente cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
+
     }
 
 
@@ -92,7 +112,9 @@ public class HelloController {
 
         //Campos por defecto deshabilitados
         emailCliente.setDisable(true);
-        nacimientoCliente.setDisable(true);
+        diaNacimientoCliente.setDisable(true);
+        mesNacimientoCliente.setDisable(true);
+        yearNacimientoCliente.setDisable(true);
         nitCliente.setDisable(true);
 
         // Se escucha los cambios de los botones, con una funcion lambda se habilita
@@ -101,21 +123,31 @@ public class HelloController {
             if (newValue != null) {
                 if (newValue == clienteNatural) {
                     emailCliente.setDisable(false);
-                    nacimientoCliente.setDisable(false);
+                    diaNacimientoCliente.setDisable(false);
+                    mesNacimientoCliente.setDisable(false);
+                    yearNacimientoCliente.setDisable(false);
                     nitCliente.setDisable(true);
                     nitCliente.clear();
                 } else if (newValue == clienteJuridico) {
                     emailCliente.setDisable(true);
                     emailCliente.clear();
-                    nacimientoCliente.setDisable(true);
-                    nacimientoCliente.clear();
+                    diaNacimientoCliente.setDisable(true);
+                    diaNacimientoCliente.clear();
+                    mesNacimientoCliente.setDisable(true);
+                    mesNacimientoCliente.clear();
+                    yearNacimientoCliente.setDisable(true);
+                    yearNacimientoCliente.clear();
                     nitCliente.setDisable(false);
                 }
             } else {
                 emailCliente.setDisable(true);
                 emailCliente.clear();
-                nacimientoCliente.setDisable(true);
-                nacimientoCliente.clear();
+                diaNacimientoCliente.setDisable(true);
+                diaNacimientoCliente.clear();
+                mesNacimientoCliente.setDisable(true);
+                mesNacimientoCliente.clear();
+                yearNacimientoCliente.setDisable(true);
+                yearNacimientoCliente.clear();
                 nitCliente.setDisable(true);
                 nitCliente.clear();
             }
