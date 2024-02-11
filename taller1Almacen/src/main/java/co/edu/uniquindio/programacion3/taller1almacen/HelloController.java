@@ -1,22 +1,17 @@
 package co.edu.uniquindio.programacion3.taller1almacen;
 
+//paquetes necesarios para trabajar:
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 //librerias ratio button:
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 
 import java.time.LocalDate;
 
 
 public class HelloController {
-    @FXML
-    private Label welcomeText;
-
-    @FXML
-    private Label labelDatosPrueba;
 
     //Capturar los datos del cliente:
     @FXML
@@ -30,7 +25,6 @@ public class HelloController {
     @FXML
     private TextField telefonoCliente;
 
-    ////////////////// pruebas ratio buttons ///////////////
     @FXML
     private TextField emailCliente;
 
@@ -61,13 +55,14 @@ public class HelloController {
     ///////////// controlador boton Registrar Cliente /////////////////
     @FXML
     protected void hacerClick() {
-        //obtener los datos del cliente
+        //obtener los datos del cliente ingresados
         String textoNombre = nombreCliente.getText();
         String textoApellido = apellidoCliente.getText();
         String textoId = idCliente.getText();
         String textoDireccion = direccionCliente.getText();
         String textoTelefono = telefonoCliente.getText();
         //Obtener datos de las clases hijas de cliente:
+        //inicializados con un string vacio
         String textoEmail ="";
         String textoFechaNacimiento ="";
         String textoNit = "";
@@ -76,13 +71,17 @@ public class HelloController {
         String textoMesNacimiento ="";
         String textoYearNacimiento ="";
 
-        Cliente cliente = null;
+        Cliente cliente = null; //El tipo de cliente se asigna con los rtio buttons
 
+        //Cuando se elige un cliente Natural o Juridico, se obtienen datos especificos
+        // y se construye un cliente con los datos obtenidos
         if (clienteNatural.isSelected()) {
             textoEmail = emailCliente.getText();
             textoDiaNacimiento = diaNacimientoCliente.getText();
             textoMesNacimiento = mesNacimientoCliente.getText();
             textoYearNacimiento = yearNacimientoCliente.getText();
+            //Se transforma los campos String a datos tipo entero
+            // Para convertirlos a una fecha de nacimiento tipo Local Date
             fechaNacimiento = LocalDate.of(Integer.parseInt(textoYearNacimiento),
                     Integer.parseInt(textoMesNacimiento),
                     Integer.parseInt(textoDiaNacimiento));
@@ -96,19 +95,22 @@ public class HelloController {
 
         }
 
+        //Ahora ya tenemos un cliente, que puede ser Natural o Juridico
+        //Se agrega ese cliente a la lista de clientes del almacen
         almacen.agregarCliente(cliente);
 
+        /////// pruebas //////////
+        //cada vez que se presiona el boton, se muestra la lista de clientes agregados
         almacen.mostrarClientes();
-
-
-        labelDatosPrueba.setText("bienvenido: "+textoNombre+"\n"+textoApellido+"\n"+textoId+"\n"+
-                textoDireccion+"\n"+textoTelefono+"\n"+textoEmail+"\n"+textoFechaNacimiento+"\n"+textoNit);
 
 
     }
 
 
     ////////////// controlador ratio buttons //////////////
+
+    // Cuando se elige entre cliente Natural o cliente Juridico
+    // los campos de datos que se deben completar se activan
 
     @FXML
     protected void initialize() {
@@ -129,13 +131,18 @@ public class HelloController {
         tipoCliente.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 if (newValue == clienteNatural) {
+                    //cuando selecciona el ratiobutton de clienteNatural
+                    // se habilitan los siguientes campos
                     emailCliente.setDisable(false);
                     diaNacimientoCliente.setDisable(false);
                     mesNacimientoCliente.setDisable(false);
                     yearNacimientoCliente.setDisable(false);
+                    //Pero desabilita el campo nit y borra su contenido
                     nitCliente.setDisable(true);
                     nitCliente.clear();
                 } else if (newValue == clienteJuridico) {
+                    //cuando selecciona el ratiobutton de clienteJuridico
+                    // se desactivan y se borran los siguientes campos:
                     emailCliente.setDisable(true);
                     emailCliente.clear();
                     diaNacimientoCliente.setDisable(true);
@@ -144,19 +151,9 @@ public class HelloController {
                     mesNacimientoCliente.clear();
                     yearNacimientoCliente.setDisable(true);
                     yearNacimientoCliente.clear();
+                    // se activa el campo para nit
                     nitCliente.setDisable(false);
                 }
-            } else {
-                emailCliente.setDisable(true);
-                emailCliente.clear();
-                diaNacimientoCliente.setDisable(true);
-                diaNacimientoCliente.clear();
-                mesNacimientoCliente.setDisable(true);
-                mesNacimientoCliente.clear();
-                yearNacimientoCliente.setDisable(true);
-                yearNacimientoCliente.clear();
-                nitCliente.setDisable(true);
-                nitCliente.clear();
             }
         });
     }
