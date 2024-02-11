@@ -54,6 +54,8 @@ public class HelloController {
 
     private ToggleGroup tipoCliente;
 
+    private Almacen almacen = new Almacen();
+
 
 
     ///////////// controlador boton Registrar Cliente /////////////////
@@ -74,7 +76,7 @@ public class HelloController {
         String textoMesNacimiento ="";
         String textoYearNacimiento ="";
 
-        //Cliente cliente = null;
+        Cliente cliente = null;
 
         if (clienteNatural.isSelected()) {
             textoEmail = emailCliente.getText();
@@ -84,14 +86,20 @@ public class HelloController {
             fechaNacimiento = LocalDate.of(Integer.parseInt(textoYearNacimiento),
                     Integer.parseInt(textoMesNacimiento),
                     Integer.parseInt(textoDiaNacimiento));
-            Cliente cliente = new ClienteNatural(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,
+            cliente = new ClienteNatural(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,
                     textoEmail,fechaNacimiento);
 
         }
         if (clienteJuridico.isSelected()){
             textoNit = nitCliente.getText();
-            Cliente cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
+            cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
+
         }
+
+        almacen.agregarCliente(cliente);
+
+        almacen.mostrarClientes();
+
 
         labelDatosPrueba.setText("bienvenido: "+textoNombre+"\n"+textoApellido+"\n"+textoId+"\n"+
                 textoDireccion+"\n"+textoTelefono+"\n"+textoEmail+"\n"+textoFechaNacimiento+"\n"+textoNit);
@@ -153,9 +161,4 @@ public class HelloController {
         });
     }
 
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 }
