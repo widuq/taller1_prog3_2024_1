@@ -48,6 +48,31 @@ public class HelloController {
 
     private ToggleGroup tipoCliente;
 
+    //////////// Los datos del producto ////////////////
+    @FXML
+    private TextField productoNombre;
+    private TextField productoDescripcion;
+    private TextField valorProducto;
+    private TextField cantidadProducto;
+    private RadioButton productoPerecedero;
+    private RadioButton productoRefrigerado;
+    private RadioButton productoEnvasado;
+    private TextField diaVencimiento;
+    private TextField mesVencimiento;
+    private TextField anoVencimiento;
+    private TextField aprobacionCodigo;
+    private TextField productoTemperatura;
+    private TextField diaEnvasado;
+    private TextField mesEnvasado;
+    private TextField anoEnvasado;
+    private TextField productoPeso;
+
+    private RadioButton colombiaOrigen;
+    private RadioButton chileOrigen;
+    private RadioButton peruOrigen;
+    private RadioButton argentinaOrigen;
+    private RadioButton ecuadorOrigen;
+
     private Almacen almacen = new Almacen();
 
 
@@ -112,6 +137,7 @@ public class HelloController {
     // Cuando se elige entre cliente Natural o cliente Juridico
     // los campos de datos que se deben completar se activan
 
+    /* //por completar
     @FXML
     protected void initialize() {
         //Se crea un grupo de dos botones para solo activar un ratiobutton a la vez
@@ -157,5 +183,69 @@ public class HelloController {
             }
         });
     }
+
+    ////////////////////// controlador ventana productos ///////////////////////
+    @FXML
+    protected void hacerClickBtnAgregarProducto() {
+        //obtener los datos del producto ingresados
+        String textoNombreProd = productoNombre.getText();
+        String textoDescripcionProd = productoDescripcion.getText();
+        String textoValorProdTxt = valorProducto.getText();
+        Double valorProductoDouble = Double.parseDouble(textoValorProdTxt);
+        String textoCantidadProdTxt = cantidadProducto.getText();
+        Integer cantidadProdInt = Integer.parseInt(textoCantidadProdTxt);
+        //String textoTelefono = telefonoCliente.getText();
+
+        //Obtener datos de las clases hijas de producto:
+        //inicializados con un string vacio
+        String textoDiaVencimiento ="";
+        String textoMesVencimiento ="";
+        String textoAnoVencimiento ="";
+        String codAprobacion ="";
+        Double tempProducto;
+        String textoDiaEnvasado="";
+        String textoMesEnvasado ="";
+        String textoAnoEnvasado ="";
+        Double pesoEnvase;
+        String origenPais;
+
+        Producto producto = null; //El tipo de Producto se asigna con los ratio buttons
+
+        //Cuando se elige un cliente Natural o Juridico, se obtienen datos especificos
+        // y se construye un cliente con los datos obtenidos
+        if (productoPerecedero.isSelected()) {
+            textoEmail = diaEnvasado.getText();
+            textoDiaNacimiento = diaNacimientoCliente.getText();
+            textoMesNacimiento = mesNacimientoCliente.getText();
+            textoYearNacimiento = yearNacimientoCliente.getText();
+            //Se transforma los campos String a datos tipo entero
+            // Para convertirlos a una fecha de nacimiento tipo Local Date
+            fechaNacimiento = LocalDate.of(Integer.parseInt(textoYearNacimiento),
+                    Integer.parseInt(textoMesNacimiento),
+                    Integer.parseInt(textoDiaNacimiento));
+            cliente = new ClienteNatural(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,
+                    textoEmail,fechaNacimiento);
+
+        }
+        if (clienteJuridico.isSelected()){
+            textoNit = nitCliente.getText();
+            cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
+
+        }
+
+        //Ahora ya tenemos un cliente, que puede ser Natural o Juridico
+        //Se agrega ese cliente a la lista de clientes del almacen
+        almacen.agregarCliente(cliente);
+
+        /////// pruebas //////////
+        //cada vez que se presiona el boton, se muestra la lista de clientes agregados
+        almacen.mostrarClientes();
+
+
+    }
+
+
+
+     */
 
 }
