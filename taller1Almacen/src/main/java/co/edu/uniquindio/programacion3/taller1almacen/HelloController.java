@@ -49,7 +49,7 @@ public class HelloController {
     private ToggleGroup tipoCliente;
 
     //////////// Los datos del producto ////////////////
-    /*
+
     @FXML
     private TextField productoNombre;
     @FXML
@@ -93,7 +93,12 @@ public class HelloController {
     private RadioButton argentinaOrigen;
     @FXML
     private RadioButton ecuadorOrigen;
-*/
+    @FXML
+    private ToggleGroup tipoProducto;
+
+    @FXML
+    private ToggleGroup tipoPais;
+
     private Almacen almacen = new Almacen();
 
 
@@ -173,6 +178,24 @@ public class HelloController {
         yearNacimientoCliente.setDisable(true);
         nitCliente.setDisable(true);
 
+        tipoProducto = new ToggleGroup();
+        productoPerecedero.setToggleGroup(tipoProducto);
+        productoRefrigerado.setToggleGroup(tipoProducto);
+        productoEnvasado.setToggleGroup(tipoProducto);
+
+        tipoPais = new ToggleGroup();
+        colombiaOrigen.setToggleGroup(tipoPais);
+
+        diaVencimiento.setDisable(true);
+        mesVencimiento.setDisable(true);
+        anoVencimiento.setDisable(true);
+        aprobacionCodigo.setDisable(true);
+        productoTemperatura.setDisable(true);
+        diaEnvasado.setDisable(true);
+        mesEnvasado.setDisable(true);
+        anoEnvasado.setDisable(true);
+        productoPeso.setDisable(true);
+
         // Se escucha los cambios de los botones, con una funcion lambda se habilita
         // o deshabilita los campos de texto segun el caso
         tipoCliente.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
@@ -200,6 +223,43 @@ public class HelloController {
                     yearNacimientoCliente.clear();
                     // se activa el campo para nit
                     nitCliente.setDisable(false);
+                }
+            }
+        });
+
+        // Lógica adicional para manejar la selección de los radio buttons de productos
+
+
+        tipoProducto.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                if (newValue == productoPerecedero) {
+                    diaVencimiento.setDisable(false);
+                    mesVencimiento.setDisable(false);
+                    anoVencimiento.setDisable(false);
+                    aprobacionCodigo.setDisable(true);
+                    productoTemperatura.setDisable(true);
+                    diaEnvasado.setDisable(true);
+                    productoPeso.setDisable(true);
+                } else if (newValue == productoRefrigerado) {
+                    diaVencimiento.setDisable(true);
+                    mesVencimiento.setDisable(true);
+                    anoVencimiento.setDisable(true);
+                    aprobacionCodigo.setDisable(false);
+                    productoTemperatura.setDisable(false);
+                    diaEnvasado.setDisable(true);
+                    mesEnvasado.setDisable(true);
+                    anoEnvasado.setDisable(true);
+                    productoPeso.setDisable(true);
+                } else if (newValue == productoEnvasado) {
+                    diaVencimiento.setDisable(true);
+                    mesVencimiento.setDisable(true);
+                    anoVencimiento.setDisable(true);
+                    aprobacionCodigo.setDisable(true);
+                    productoTemperatura.setDisable(true);
+                    diaEnvasado.setDisable(false);
+                    mesEnvasado.setDisable(false);
+                    anoEnvasado.setDisable(false);
+                    productoPeso.setDisable(false);
                 }
             }
         });
