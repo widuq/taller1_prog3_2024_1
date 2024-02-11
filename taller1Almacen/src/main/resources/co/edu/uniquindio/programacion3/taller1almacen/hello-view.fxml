@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
+<AnchorPane prefHeight="476.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
    <children>
       <VBox layoutX="-78.0" layoutY="222.0" prefHeight="200.0" prefWidth="100.0" />
-      <TabPane layoutX="-1.0" layoutY="-3.0" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="-1.0" layoutY="-3.0" prefHeight="487.0" prefWidth="696.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Cliente">
             <content>
@@ -49,8 +49,39 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="31.0" text="Nombre" />
-                        <TextField layoutX="65.0" layoutY="27.0" />
+                        <Label layoutX="14.0" layoutY="31.0" text="Nombre del producto:" />
+                        <TextField fx:id="productoNombre" layoutX="137.0" layoutY="27.0" prefHeight="25.0" prefWidth="173.0" />
+                        <Label layoutX="14.0" layoutY="72.0" text="Descripcion del producto:" />
+                        <TextField fx:id="productoDescripcion" layoutX="160.0" layoutY="68.0" prefHeight="25.0" prefWidth="152.0" />
+                        <Label layoutX="14.0" layoutY="115.0" text="Valor: " />
+                        <Label layoutX="14.0" layoutY="153.0" text="Cantidad:" />
+                        <TextField fx:id="valorProducto" layoutX="48.0" layoutY="111.0" prefHeight="25.0" prefWidth="80.0" />
+                        <TextField fx:id="cantidadProducto" layoutX="74.0" layoutY="149.0" prefHeight="25.0" prefWidth="57.0" />
+                        <RadioButton fx:id="productoPerecedero" layoutX="125.0" layoutY="194.0" mnemonicParsing="false" text="Perecedero " />
+                        <Label layoutX="10.0" layoutY="194.0" prefHeight="17.0" prefWidth="155.0" text="Tipo de producto:" />
+                        <RadioButton fx:id="productoRefrigerado" layoutX="253.0" layoutY="194.0" mnemonicParsing="false" text="Refrigerado" />
+                        <RadioButton fx:id="productoEnvasado" layoutX="367.0" layoutY="194.0" mnemonicParsing="false" text="Envasado" />
+                        <Label layoutX="12.0" layoutY="248.0" text="Fecha Vencimiento:" />
+                        <TextField fx:id="diaVencimiento" layoutX="120.0" layoutY="244.0" prefHeight="25.0" prefWidth="34.0" text="DD" />
+                        <TextField fx:id="mesVencimiento" layoutX="158.0" layoutY="244.0" prefHeight="25.0" prefWidth="35.0" text="MM" />
+                        <TextField fx:id="anoVencimiento" layoutX="199.0" layoutY="244.0" prefHeight="25.0" prefWidth="49.0" text="AAAA" />
+                        <Label layoutX="15.0" layoutY="286.0" prefHeight="17.0" prefWidth="113.0" text="Código Aprobación:" />
+                        <TextField fx:id="aprobacionCodigo" layoutX="133.0" layoutY="282.0" prefHeight="25.0" prefWidth="119.0" />
+                        <TextField fx:id="productoTemperatura" layoutX="101.0" layoutY="314.0" prefHeight="12.0" prefWidth="54.0" />
+                        <Label layoutX="15.0" layoutY="318.0" prefHeight="17.0" prefWidth="78.0" text="Temperatura:" />
+                        <Label layoutX="11.0" layoutY="355.0" text="Fecha Envasado:" />
+                        <TextField fx:id="diaEnvasado" layoutX="111.0" layoutY="351.0" prefHeight="25.0" prefWidth="34.0" text="DD" />
+                        <TextField fx:id="mesEnvasado" layoutX="150.0" layoutY="351.0" prefHeight="25.0" prefWidth="35.0" text="MM" />
+                        <TextField fx:id="anoEnvasado" layoutX="199.0" layoutY="351.0" prefHeight="25.0" prefWidth="49.0" text="AAAA" />
+                        <Label layoutX="11.0" layoutY="388.0" text="Peso:" />
+                        <TextField fx:id="productoPeso" layoutX="43.0" layoutY="384.0" prefHeight="25.0" prefWidth="57.0" />
+                        <Label layoutX="11.0" layoutY="418.0" text="Pais de Origen:" />
+                        <RadioButton fx:id="colombiaOrigen" layoutX="95.0" layoutY="418.0" mnemonicParsing="false" text="COLOMBIA" />
+                        <RadioButton fx:id="chileOrigen" layoutX="195.0" layoutY="418.0" mnemonicParsing="false" text="CHILE" />
+                        <RadioButton fx:id="peruOrigen" layoutX="270.0" layoutY="418.0" mnemonicParsing="false" text="PERU" />
+                        <RadioButton fx:id="argentinaOrigen" layoutX="330.0" layoutY="418.0" mnemonicParsing="false" text="ARGENTINA " />
+                        <RadioButton fx:id="ecuadorOrigen" layoutX="439.0" layoutY="418.0" mnemonicParsing="false" text="ECUADOR" />
+                        <Button fx:id="productoAgregar" layoutX="485.0" layoutY="36.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="141.0" text="Agregar Producto" />
                      </children></AnchorPane>
             </content>
           </Tab>
