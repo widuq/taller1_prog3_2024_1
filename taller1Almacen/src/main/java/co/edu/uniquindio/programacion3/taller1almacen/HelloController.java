@@ -49,30 +49,51 @@ public class HelloController {
     private ToggleGroup tipoCliente;
 
     //////////// Los datos del producto ////////////////
+    /*
     @FXML
     private TextField productoNombre;
+    @FXML
     private TextField productoDescripcion;
+    @FXML
     private TextField valorProducto;
+    @FXML
     private TextField cantidadProducto;
+    @FXML
     private RadioButton productoPerecedero;
+    @FXML
     private RadioButton productoRefrigerado;
+    @FXML
     private RadioButton productoEnvasado;
+    @FXML
     private TextField diaVencimiento;
+    @FXML
     private TextField mesVencimiento;
+    @FXML
     private TextField anoVencimiento;
+    @FXML
     private TextField aprobacionCodigo;
+    @FXML
     private TextField productoTemperatura;
+    @FXML
     private TextField diaEnvasado;
+    @FXML
     private TextField mesEnvasado;
+    @FXML
     private TextField anoEnvasado;
+    @FXML
     private TextField productoPeso;
 
+    @FXML
     private RadioButton colombiaOrigen;
+    @FXML
     private RadioButton chileOrigen;
+    @FXML
     private RadioButton peruOrigen;
+    @FXML
     private RadioButton argentinaOrigen;
+    @FXML
     private RadioButton ecuadorOrigen;
-
+*/
     private Almacen almacen = new Almacen();
 
 
@@ -137,7 +158,7 @@ public class HelloController {
     // Cuando se elige entre cliente Natural o cliente Juridico
     // los campos de datos que se deben completar se activan
 
-    /* //por completar
+
     @FXML
     protected void initialize() {
         //Se crea un grupo de dos botones para solo activar un ratiobutton a la vez
@@ -185,6 +206,9 @@ public class HelloController {
     }
 
     ////////////////////// controlador ventana productos ///////////////////////
+
+    /* //por completar
+
     @FXML
     protected void hacerClickBtnAgregarProducto() {
         //obtener los datos del producto ingresados
