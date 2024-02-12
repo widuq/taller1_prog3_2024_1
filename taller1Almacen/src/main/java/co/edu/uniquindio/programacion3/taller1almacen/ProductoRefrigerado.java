@@ -4,8 +4,10 @@ public class ProductoRefrigerado extends Producto {
     private String codAprovacion;
     private double tempRecomendada;
 
-    public ProductoRefrigerado(String codigo, String nombreProducto, String descripcion, double valorUnitario, int cantidadExistencias, String codAprovacion, double tempRecomendada) {
-        super(codigo, nombreProducto, descripcion, valorUnitario, cantidadExistencias);
+    public ProductoRefrigerado(String codigo, String nombreProducto, String descripcion,
+                               double valorUnitario, int cantidadExistencias, String codAprovacion,
+                               double tempRecomendada, TipoProducto tipoProducto) {
+        super(codigo, nombreProducto, descripcion, valorUnitario, cantidadExistencias, tipoProducto);
         this.codAprovacion = codAprovacion;
         this.tempRecomendada = tempRecomendada;
     }

@@ -7,12 +7,16 @@ public class Producto {
     private double valorUnitario;
     private int cantidadExistencias;
 
-    public Producto(String codigo, String nombreProducto, String descripcion, double valorUnitario, int cantidadExistencias) {
+    private TipoProducto tipoProducto;
+
+    public Producto(String codigo, String nombreProducto, String descripcion,
+                    double valorUnitario, int cantidadExistencias, TipoProducto tipoProducto) {
         this.codigo = codigo;
         this.nombreProducto = nombreProducto;
         this.descripcion = descripcion;
         this.valorUnitario = valorUnitario;
         this.cantidadExistencias = cantidadExistencias;
+        this.tipoProducto = tipoProducto;
     }
 
     public String getCodigo() {
@@ -53,5 +57,13 @@ public class Producto {
 
     public void setCantidadExistencias(int cantidadExistencias) {
         this.cantidadExistencias = cantidadExistencias;
+    }
+
+    public TipoProducto getTipoProducto() {
+        return tipoProducto;
+    }
+
+    public void setTipoProducto(TipoProducto tipoProducto) {
+        this.tipoProducto = tipoProducto;
     }
 }
