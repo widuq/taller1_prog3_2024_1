@@ -102,7 +102,6 @@ public class HelloController {
     private Almacen almacen = new Almacen();
 
 
-
     ///////////// controlador boton Registrar Cliente /////////////////
     @FXML
     protected void hacerClick() {
@@ -114,13 +113,13 @@ public class HelloController {
         String textoTelefono = telefonoCliente.getText();
         //Obtener datos de las clases hijas de cliente:
         //inicializados con un string vacio
-        String textoEmail ="";
-        String textoFechaNacimiento ="";
+        String textoEmail = "";
+        String textoFechaNacimiento = "";
         String textoNit = "";
         LocalDate fechaNacimiento;
-        String textoDiaNacimiento ="";
-        String textoMesNacimiento ="";
-        String textoYearNacimiento ="";
+        String textoDiaNacimiento = "";
+        String textoMesNacimiento = "";
+        String textoYearNacimiento = "";
 
         Cliente cliente = null; //El tipo de cliente se asigna con los rtio buttons
 
@@ -136,13 +135,13 @@ public class HelloController {
             fechaNacimiento = LocalDate.of(Integer.parseInt(textoYearNacimiento),
                     Integer.parseInt(textoMesNacimiento),
                     Integer.parseInt(textoDiaNacimiento));
-            cliente = new ClienteNatural(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,
-                    textoEmail,fechaNacimiento);
+            cliente = new ClienteNatural(textoNombre, textoApellido, textoId, textoDireccion, textoTelefono,
+                    textoEmail, fechaNacimiento);
 
         }
-        if (clienteJuridico.isSelected()){
+        if (clienteJuridico.isSelected()) {
             textoNit = nitCliente.getText();
-            cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
+            cliente = new ClienteJuridico(textoNombre, textoApellido, textoId, textoDireccion, textoTelefono, textoNit);
 
         }
 
@@ -300,7 +299,7 @@ public class HelloController {
 
     ////////////////////// controlador ventana productos ///////////////////////
 
-     //por completar
+    //por completar
 
     @FXML
     protected void hacerClickBtnAgregarProducto() {
@@ -315,14 +314,14 @@ public class HelloController {
 
         //Obtener datos de las clases hijas de producto:
         //inicializados con un string vacio
-        String textoDiaVencimiento ="";
-        String textoMesVencimiento ="";
-        String textoAnoVencimiento ="";
-        String textoCodAprobacion ="";
+        String textoDiaVencimiento = "";
+        String textoMesVencimiento = "";
+        String textoAnoVencimiento = "";
+        String textoCodAprobacion = "";
         Double tempProducto;
-        String textoDiaEnvasado="";
-        String textoMesEnvasado ="";
-        String textoAnoEnvasado ="";
+        String textoDiaEnvasado = "";
+        String textoMesEnvasado = "";
+        String textoAnoEnvasado = "";
         Double pesoEnvase;
         //String origenPais;
         PaisOrigen pais;
@@ -343,18 +342,18 @@ public class HelloController {
                     Integer.parseInt(textoMesVencimiento),
                     Integer.parseInt(textoDiaVencimiento));
             /////////// modificar el constructor que no tiene codigo en interfaz ///////////
-            producto = new ProductoPerecedero(textoNombreProd,textoNombreProd,textoDescripcionProd,
-                    valorProductoDouble,cantidadProdInt,fechaVencimiento);
+            producto = new ProductoPerecedero(textoNombreProd, textoNombreProd, textoDescripcionProd,
+                    valorProductoDouble, cantidadProdInt, fechaVencimiento);
 
         }
-        if (productoRefrigerado.isSelected()){
+        if (productoRefrigerado.isSelected()) {
             textoCodAprobacion = aprobacionCodigo.getText();
             tempProducto = Double.parseDouble(productoTemperatura.getText());
             ///7//Actualizar aqui tambien ///////////////////:
-            producto = new ProductoRefrigerado(textoNombreProd,textoNombreProd,textoDescripcionProd,
-                    valorProductoDouble,cantidadProdInt,textoCodAprobacion,tempProducto);
+            producto = new ProductoRefrigerado(textoNombreProd, textoNombreProd, textoDescripcionProd,
+                    valorProductoDouble, cantidadProdInt, textoCodAprobacion, tempProducto);
         }
-        if (productoEnvasado.isSelected()){
+        if (productoEnvasado.isSelected()) {
             textoDiaEnvasado = diaEnvasado.getText();
             textoMesEnvasado = mesEnvasado.getText();
             textoAnoEnvasado = anoEnvasado.getText();
@@ -365,7 +364,7 @@ public class HelloController {
                     Integer.parseInt(textoDiaEnvasado));
             pesoEnvase = Double.parseDouble(productoPeso.getText());
 
-            if(colombiaOrigen.isSelected()){
+            if (colombiaOrigen.isSelected()) {
                 pais = PaisOrigen.COLOMBIA;
             } else if (chileOrigen.isSelected()) {
                 pais = PaisOrigen.CHILE;
@@ -373,12 +372,12 @@ public class HelloController {
                 pais = PaisOrigen.PERU;
             } else if (argentinaOrigen.isSelected()) {
                 pais = PaisOrigen.ARGENTINA;
-            }else{
+            } else {
                 pais = PaisOrigen.ECUADOR;
             }
             /////////// modificar el constructor que no tiene codigo en interfaz ///////////
-            producto = new ProductoEnvasado(textoNombreProd,textoNombreProd,textoDescripcionProd,
-                    valorProductoDouble,cantidadProdInt,fechaEnvasado,pesoEnvase,pais);
+            producto = new ProductoEnvasado(textoNombreProd, textoNombreProd, textoDescripcionProd,
+                    valorProductoDouble, cantidadProdInt, fechaEnvasado, pesoEnvase, pais);
 
         }
 
@@ -392,93 +391,4 @@ public class HelloController {
 
 
     }
-    // Lógica para mostrar los datos de producto
-    public class HelloControler{
-        @FXML
-        private label welcomeText;
-
-        @FXML
-        private Label labeldatosProducto;
-
-        //Captura los datos de producto
-
-        @FXML
-        private TextField codigoProducto;
-
-        @FXML
-        private TextField productoNombre;
-        @FXML
-        private TextField productoDescripcion;
-        @FXML
-        private TextField valorProducto;
-        @FXML
-        private TextField cantidadProducto;
-
-        @FXML
-        private RadioButton productoPerecedero;
-
-        @FXML
-        private RadioButton productoRefrigerado;
-
-        @FXML
-        private RadioButton productoEnvasado;
-
-        private ToggleGroup tipoProducto;
-
-        @FXML
-        private TextField diaVencimiento;
-
-        @FXML
-        private TextField mesVencimiento;
-
-        @FXML
-        private TextField anoVencimiento;
-
-        @FXML
-        private TextField aprobacionCodigo;
-
-        @FXML
-        private TextField productoTemperatura;
-
-        @FXML
-        private TextField diaEnvasadoo;
-
-        @FXML
-        private TextField mesEnvasadoo;
-
-        @FXML
-        private TextField anoEnvasadoo;
-
-        @FXML
-        private RadioButton colombiaOrigen;
-
-        @FXML
-        private RadioButton chileOrigen;
-
-        @FXML
-        private RadioButton peruOrigen;
-
-        @FXML
-        private RadioButton ecuadorOrigen;
-
-        @FXML
-        private RadioButton argentinaOrigen;
-
-        private ToggleGroup tipoOrigen;
-
 }
-
-=======
->>>>>>> 44e95beb5d1f152be794c328b5296eb37c08d610
-
-
-
-
-<<<<<<< HEAD
-}
-
-
-=======
-
-}
->>>>>>> 44e95beb5d1f152be794c328b5296eb37c08d610
