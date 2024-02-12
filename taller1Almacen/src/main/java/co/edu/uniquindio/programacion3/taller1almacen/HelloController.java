@@ -159,3 +159,83 @@ public class HelloController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 }
+// Lógica para mostrar los datos de producto
+public class HelloControler{
+    @FXML
+    private label welcomeText;
+
+    @FXML
+    private Label labeldatosProducto;
+
+    //Captura los datos de producto
+
+    @FXML
+    private TextField codigoProducto;
+    
+    @FXML
+    private TextField productoNombre;
+    @FXML
+    private TextField productoDescripcion;
+    @FXML
+    private TextField valorProducto;
+    @FXML
+    private TextField cantidadProducto;
+
+    @FXML
+    private RadioButton productoPerecedero;
+
+    @FXML
+    private RadioButton productoRefrigerado;
+
+    @FXML
+    private RadioButton productoEnvasado;
+
+    private ToggleGroup tipoProducto;
+
+    @FXML
+    private TextField diaVencimiento;
+
+    @FXML
+    private TextField mesVencimiento;
+
+    @FXML
+    private TextField anoVencimiento;
+
+    @FXML
+    private TextField aprobacionCodigo;
+
+    @FXML
+    private TextField productoTemperatura;
+
+    @FXML
+    private TextField diaEnvasadoo;
+
+    @FXML
+    private TextField mesEnvasadoo;
+
+    @FXML
+    private TextField anoEnvasadoo;
+
+    @FXML
+    private RadioButton colombiaOrigen;
+
+    @FXML
+    private RadioButton chileOrigen;
+
+    @FXML
+    private RadioButton peruOrigen;
+
+    @FXML
+    private RadioButton ecuadorOrigen;
+
+    @FXML
+    private RadioButton argentinaOrigen;
+
+    private ToggleGroup tipoOrigen;
+
+
+
+
+}
+
+
