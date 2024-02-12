@@ -7,14 +7,17 @@ public class Cliente {
     private String identificacion;
     private String direccion;
     private String telefono;
+    private TipoCliente tipoCliente;
 
 // prueba githab 2
-    public Cliente(java.lang.String nombre, java.lang.String apellido, java.lang.String identificacion, java.lang.String direccion, java.lang.String telefono) {
+    public Cliente(String nombre, String apellido, String identificacion, String direccion,
+                   String telefono, TipoCliente tipoCliente) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificacion = identificacion;
         this.direccion = direccion;
         this.telefono = telefono;
+        this.tipoCliente = tipoCliente;
     }
 
     public String getNombre() {
@@ -56,5 +59,13 @@ public class Cliente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public TipoCliente getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(TipoCliente tipoCliente) {
+        this.tipoCliente = tipoCliente;
     }
 }

@@ -6,21 +6,14 @@ import java.util.ArrayList;
 public class Almacen {
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Producto> listaProductos;
-/*
-    public Almacen(ArrayList<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
-    }
 
-    public Almacen() {
-        this.listaClientes = new ArrayList<>();
-
-    }
-*/
+    //Creacion de un almacen con dos ArrayList vacios
     public Almacen() {
         this.listaClientes = new ArrayList<>();
         this.listaProductos = new ArrayList<>();
     }
 
+    //métodos getters y setters
     public ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
@@ -47,6 +40,9 @@ public class Almacen {
         listaProductos.add(producto);
     }
 
+        //Guia para acceder a los datos de los arraylist
+
+    //Por ahora se imprime en consola y muesra los datos
     public void mostrarClientes() {
         for (Cliente cliente : listaClientes) {
             System.out.println("Nombre: " + cliente.getNombre());
@@ -54,6 +50,7 @@ public class Almacen {
             System.out.println("ID: " + cliente.getIdentificacion());
             System.out.println("Dirección: " + cliente.getDireccion());
             System.out.println("Teléfono: " + cliente.getTelefono());
+            System.out.println("Tipo de Cliente: "+cliente.getTipoCliente());
             //Mostrar los datos cuando es un cliente Natural:
             if(cliente instanceof ClienteNatural){
                 System.out.println("Email:"+((ClienteNatural) cliente).getEmail());

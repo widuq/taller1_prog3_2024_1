@@ -1,12 +1,12 @@
 package co.edu.uniquindio.programacion3.taller1almacen;
 
 //paquetes necesarios para trabajar:
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 //librerias ratio button:
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
 
 import java.time.LocalDate;
 
@@ -103,6 +103,21 @@ public class HelloController {
     private Almacen almacen = new Almacen();
 
 
+    //////////// pruebas tabla personas ///////////
+    @FXML private TableView<Cliente> tablaClientes;
+    @FXML private TableColumn nombreClienteTabla;
+    @FXML private TableColumn apellidoClienteTabla;
+    @FXML private TableColumn idClienteTabla;
+    @FXML private TableColumn direccionClienteTabla;
+    @FXML private TableColumn telefonoClienteTabla;
+    @FXML private TableColumn tipoClienteTabla;
+    @FXML private TableColumn emailClienteTabla;
+    @FXML private TableColumn fechaNacimientoClienteTabla;
+    @FXML private TableColumn nitClienteTabla;
+    ObservableList<Cliente> clientes;
+
+
+
     ///////////// controlador boton Registrar Cliente /////////////////
     @FXML
     protected void hacerClick() {
@@ -137,12 +152,13 @@ public class HelloController {
                     Integer.parseInt(textoMesNacimiento),
                     Integer.parseInt(textoDiaNacimiento));
             cliente = new ClienteNatural(textoNombre, textoApellido, textoId, textoDireccion, textoTelefono,
-                    textoEmail, fechaNacimiento);
+                    textoEmail, fechaNacimiento,TipoCliente.NATURAL);
 
         }
         if (clienteJuridico.isSelected()) {
             textoNit = nitCliente.getText();
-            cliente = new ClienteJuridico(textoNombre, textoApellido, textoId, textoDireccion, textoTelefono, textoNit);
+            cliente = new ClienteJuridico(textoNombre, textoApellido, textoId,
+                    textoDireccion, textoTelefono, textoNit, TipoCliente.JURIDICO);
 
         }
 
@@ -154,6 +170,31 @@ public class HelloController {
         //cada vez que se presiona el boton, se muestra la lista de clientes agregados
         almacen.mostrarClientes();
 
+        // Se actualiza la lista de clientes en la tabla
+        clientes = FXCollections.observableArrayList(almacen.getListaClientes());
+        tablaClientes.setItems(clientes);
+        // Configuración de las celdas de la tabla
+        nombreClienteTabla.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        apellidoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("apellido"));
+        idClienteTabla.setCellValueFactory(new PropertyValueFactory<>("identificacion"));
+        direccionClienteTabla.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+        telefonoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("telefono"));
+        tipoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("tipoCliente"));
+
+        if(clienteNatural.isSelected()){
+            emailClienteTabla.setCellValueFactory(new PropertyValueFactory<>("email"));
+            fechaNacimientoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("fechaNacimiento"));
+
+        }
+        if(clienteJuridico.isSelected())        {
+            nitClienteTabla.setCellValueFactory(new PropertyValueFactory<>("nit"));
+        }
+
+
+
+       // nombreClienteTabla.setCellValueFactory(new PropertyValueFactory<Cliente,String>("apellido"));
+       // clientes = FXCollections.observableArrayList();
+       // tablaClientes.setItems(clientes);
 
     }
 

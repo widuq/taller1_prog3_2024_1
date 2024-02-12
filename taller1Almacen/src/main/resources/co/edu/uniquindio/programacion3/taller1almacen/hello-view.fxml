@@ -44,17 +44,17 @@
                         <Button fx:id="btnclienteVisualizar" layoutX="431.0" layoutY="98.0" mnemonicParsing="false" onAction="#hacerClick" text="Visualizar Cliente" />
                         <Button fx:id="btnclienteActualizar" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#hacerClick" prefHeight="25.0" prefWidth="108.0" text="Actualizar Cliente" />
                         <Button fx:id="btnclienteEliminar" layoutX="431.0" layoutY="216.0" mnemonicParsing="false" onAction="#hacerClick" prefHeight="25.0" prefWidth="109.0" text="Eliminar Cliente" />
-                        <TableView layoutX="-7.0" layoutY="302.0" prefHeight="147.0" prefWidth="968.0">
+                        <TableView fx:id="tablaClientes" layoutX="-7.0" layoutY="302.0" prefHeight="147.0" prefWidth="968.0">
                           <columns>
-                            <TableColumn prefWidth="74.66665649414062" text="NOMBRE" />
-                            <TableColumn prefWidth="106.0" text="APELLIDO" />
-                              <TableColumn prefWidth="82.00001525878906" text="ID" />
-                              <TableColumn minWidth="8.66668701171875" prefWidth="97.33334350585938" text="DIRECCION" />
-                              <TableColumn minWidth="0.0" prefWidth="105.33334350585938" text="TELEFONO" />
-                              <TableColumn minWidth="0.0" prefWidth="91.33334350585938" text="TIPODECLIENTE" />
-                              <TableColumn minWidth="4.00006103515625" prefWidth="129.33331298828125" text="EMAIL" />
-                              <TableColumn minWidth="0.0" prefWidth="156.0" text="FECHANACIMIENTO" />
-                              <TableColumn minWidth="0.0" prefWidth="116.66668701171875" text="NIT" />
+                            <TableColumn fx:id="nombreClienteTabla" prefWidth="74.66665649414062" text="NOMBRE" />
+                            <TableColumn fx:id="apellidoClienteTabla" prefWidth="106.0" text="APELLIDO" />
+                              <TableColumn fx:id="idClienteTabla" prefWidth="82.00001525878906" text="ID" />
+                              <TableColumn fx:id="direccionClienteTabla" minWidth="8.66668701171875" prefWidth="97.33334350585938" text="DIRECCION" />
+                              <TableColumn fx:id="telefonoClienteTabla" minWidth="0.0" prefWidth="105.33334350585938" text="TELEFONO" />
+                              <TableColumn fx:id="tipoClienteTabla" minWidth="0.0" prefWidth="91.33334350585938" text="TIPODECLIENTE" />
+                              <TableColumn fx:id="emailClienteTabla" minWidth="4.00006103515625" prefWidth="129.33331298828125" text="EMAIL" />
+                              <TableColumn fx:id="fechaNacimientoClienteTabla" minWidth="0.0" prefWidth="156.0" text="FECHANACIMIENTO" />
+                              <TableColumn fx:id="nitClienteTabla" minWidth="0.0" prefWidth="116.66668701171875" text="NIT" />
                           </columns>
                         </TableView>
                      </children>
