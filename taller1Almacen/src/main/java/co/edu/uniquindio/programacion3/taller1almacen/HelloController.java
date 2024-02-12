@@ -49,7 +49,8 @@ public class HelloController {
     private ToggleGroup tipoCliente;
 
     //////////// Los datos del producto ////////////////
-
+    @FXML
+    private TextField codigoProducto;
     @FXML
     private TextField productoNombre;
     @FXML
@@ -304,6 +305,7 @@ public class HelloController {
     @FXML
     protected void hacerClickBtnAgregarProducto() {
         //obtener los datos del producto ingresados
+        String textoCodigoProd = codigoProducto.getText();
         String textoNombreProd = productoNombre.getText();
         String textoDescripcionProd = productoDescripcion.getText();
         String textoValorProdTxt = valorProducto.getText();
@@ -342,16 +344,16 @@ public class HelloController {
                     Integer.parseInt(textoMesVencimiento),
                     Integer.parseInt(textoDiaVencimiento));
             /////////// modificar el constructor que no tiene codigo en interfaz ///////////
-            producto = new ProductoPerecedero(textoNombreProd, textoNombreProd, textoDescripcionProd,
-                    valorProductoDouble, cantidadProdInt, fechaVencimiento);
+            producto = new ProductoPerecedero(textoCodigoProd, textoNombreProd, textoDescripcionProd,
+                    valorProductoDouble, cantidadProdInt, fechaVencimiento,TipoProducto.PERECEDERO);
 
         }
         if (productoRefrigerado.isSelected()) {
             textoCodAprobacion = aprobacionCodigo.getText();
             tempProducto = Double.parseDouble(productoTemperatura.getText());
             ///7//Actualizar aqui tambien ///////////////////:
-            producto = new ProductoRefrigerado(textoNombreProd, textoNombreProd, textoDescripcionProd,
-                    valorProductoDouble, cantidadProdInt, textoCodAprobacion, tempProducto);
+            producto = new ProductoRefrigerado(textoCodigoProd, textoNombreProd, textoDescripcionProd,
+                    valorProductoDouble, cantidadProdInt, textoCodAprobacion, tempProducto,TipoProducto.REFRIGERADO);
         }
         if (productoEnvasado.isSelected()) {
             textoDiaEnvasado = diaEnvasado.getText();
@@ -376,8 +378,8 @@ public class HelloController {
                 pais = PaisOrigen.ECUADOR;
             }
             /////////// modificar el constructor que no tiene codigo en interfaz ///////////
-            producto = new ProductoEnvasado(textoNombreProd, textoNombreProd, textoDescripcionProd,
-                    valorProductoDouble, cantidadProdInt, fechaEnvasado, pesoEnvase, pais);
+            producto = new ProductoEnvasado(textoCodigoProd, textoNombreProd, textoDescripcionProd,
+                    valorProductoDouble, cantidadProdInt, fechaEnvasado, pesoEnvase, pais,TipoProducto.ENVASADO);
 
         }
 

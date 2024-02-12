@@ -73,6 +73,7 @@ public class Almacen {
             System.out.println("Nombre: " + producto.getNombreProducto());
             System.out.println("Valor Unitario: " + producto.getValorUnitario() );
             System.out.println("Cantidad: " + producto.getCantidadExistencias());
+            System.out.println("Tipo de Producto: "+producto.getTipoProducto());
             /// hace falta agregar el TIPO DE PRODUCTO //////////////
 
             //Mostrar los datos cuando es un perecedero:
