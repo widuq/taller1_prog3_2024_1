@@ -178,6 +178,12 @@ public class HelloController {
         yearNacimientoCliente.setDisable(true);
         nitCliente.setDisable(true);
 
+        colombiaOrigen.setDisable(true);
+        chileOrigen.setDisable(true);
+        peruOrigen.setDisable(true);
+        argentinaOrigen.setDisable(true);
+        ecuadorOrigen.setDisable(true);
+
         tipoProducto = new ToggleGroup();
         productoPerecedero.setToggleGroup(tipoProducto);
         productoRefrigerado.setToggleGroup(tipoProducto);
@@ -185,6 +191,11 @@ public class HelloController {
 
         tipoPais = new ToggleGroup();
         colombiaOrigen.setToggleGroup(tipoPais);
+        argentinaOrigen.setToggleGroup(tipoPais);
+        chileOrigen.setToggleGroup(tipoPais);
+        peruOrigen.setToggleGroup(tipoPais);
+        ecuadorOrigen.setToggleGroup(tipoPais);
+
 
         diaVencimiento.setDisable(true);
         mesVencimiento.setDisable(true);
@@ -242,6 +253,13 @@ public class HelloController {
                     mesEnvasado.setDisable(true);
                     anoEnvasado.setDisable(true);
                     productoPeso.setDisable(true);
+
+                    colombiaOrigen.setDisable(true);
+                    chileOrigen.setDisable(true);
+                    peruOrigen.setDisable(true);
+                    argentinaOrigen.setDisable(true);
+                    ecuadorOrigen.setDisable(true);
+
                 } else if (newValue == productoRefrigerado) {
                     diaVencimiento.setDisable(true);
                     mesVencimiento.setDisable(true);
@@ -252,6 +270,13 @@ public class HelloController {
                     mesEnvasado.setDisable(true);
                     anoEnvasado.setDisable(true);
                     productoPeso.setDisable(true);
+
+                    colombiaOrigen.setDisable(true);
+                    chileOrigen.setDisable(true);
+                    peruOrigen.setDisable(true);
+                    argentinaOrigen.setDisable(true);
+                    ecuadorOrigen.setDisable(true);
+
                 } else if (newValue == productoEnvasado) {
                     diaVencimiento.setDisable(true);
                     mesVencimiento.setDisable(true);
@@ -262,6 +287,12 @@ public class HelloController {
                     mesEnvasado.setDisable(false);
                     anoEnvasado.setDisable(false);
                     productoPeso.setDisable(false);
+
+                    colombiaOrigen.setDisable(false);
+                    chileOrigen.setDisable(false);
+                    peruOrigen.setDisable(false);
+                    argentinaOrigen.setDisable(false);
+                    ecuadorOrigen.setDisable(false);
                 }
             }
         });
@@ -293,8 +324,8 @@ public class HelloController {
         String textoMesEnvasado ="";
         String textoAnoEnvasado ="";
         Double pesoEnvase;
-        String origenPais;
-
+        //String origenPais;
+        PaisOrigen pais;
         LocalDate fechaEnvasado;
         LocalDate fechaVencimiento;
 
@@ -333,9 +364,21 @@ public class HelloController {
                     Integer.parseInt(textoMesEnvasado),
                     Integer.parseInt(textoDiaEnvasado));
             pesoEnvase = Double.parseDouble(productoPeso.getText());
+
+            if(colombiaOrigen.isSelected()){
+                pais = PaisOrigen.COLOMBIA;
+            } else if (chileOrigen.isSelected()) {
+                pais = PaisOrigen.CHILE;
+            } else if (peruOrigen.isSelected()) {
+                pais = PaisOrigen.PERU;
+            } else if (argentinaOrigen.isSelected()) {
+                pais = PaisOrigen.ARGENTINA;
+            }else{
+                pais = PaisOrigen.ECUADOR;
+            }
             /////////// modificar el constructor que no tiene codigo en interfaz ///////////
             producto = new ProductoEnvasado(textoNombreProd,textoNombreProd,textoDescripcionProd,
-                    valorProductoDouble,cantidadProdInt,fechaEnvasado,pesoEnvase,PaisOrigen.COLOMBIA);
+                    valorProductoDouble,cantidadProdInt,fechaEnvasado,pesoEnvase,pais);
 
         }
 

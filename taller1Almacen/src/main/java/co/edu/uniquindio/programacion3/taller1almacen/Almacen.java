@@ -88,6 +88,7 @@ public class Almacen {
             if (producto instanceof ProductoEnvasado){
                 System.out.println("Fecha envasado: "+((ProductoEnvasado) producto).getFechaEnvasado());
                 System.out.println("Peso envase: "+ ((ProductoEnvasado) producto).getPesoEnvase());
+                System.out.println("Pais de Orígen: " + ((ProductoEnvasado) producto).getPaisOrigen());
             }
             System.out.println("----------------------------------------");
         }
