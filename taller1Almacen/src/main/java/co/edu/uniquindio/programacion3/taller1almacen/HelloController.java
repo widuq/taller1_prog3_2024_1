@@ -239,6 +239,8 @@ public class HelloController {
                     aprobacionCodigo.setDisable(true);
                     productoTemperatura.setDisable(true);
                     diaEnvasado.setDisable(true);
+                    mesEnvasado.setDisable(true);
+                    anoEnvasado.setDisable(true);
                     productoPeso.setDisable(true);
                 } else if (newValue == productoRefrigerado) {
                     diaVencimiento.setDisable(true);
@@ -267,7 +269,7 @@ public class HelloController {
 
     ////////////////////// controlador ventana productos ///////////////////////
 
-    /* //por completar
+     //por completar
 
     @FXML
     protected void hacerClickBtnAgregarProducto() {
@@ -285,7 +287,7 @@ public class HelloController {
         String textoDiaVencimiento ="";
         String textoMesVencimiento ="";
         String textoAnoVencimiento ="";
-        String codAprobacion ="";
+        String textoCodAprobacion ="";
         Double tempProducto;
         String textoDiaEnvasado="";
         String textoMesEnvasado ="";
@@ -293,43 +295,63 @@ public class HelloController {
         Double pesoEnvase;
         String origenPais;
 
+        LocalDate fechaEnvasado;
+        LocalDate fechaVencimiento;
+
         Producto producto = null; //El tipo de Producto se asigna con los ratio buttons
 
         //Cuando se elige un cliente Natural o Juridico, se obtienen datos especificos
         // y se construye un cliente con los datos obtenidos
         if (productoPerecedero.isSelected()) {
-            textoEmail = diaEnvasado.getText();
-            textoDiaNacimiento = diaNacimientoCliente.getText();
-            textoMesNacimiento = mesNacimientoCliente.getText();
-            textoYearNacimiento = yearNacimientoCliente.getText();
+            textoDiaVencimiento = diaVencimiento.getText();
+            textoMesVencimiento = mesVencimiento.getText();
+            textoAnoVencimiento = anoVencimiento.getText();
             //Se transforma los campos String a datos tipo entero
             // Para convertirlos a una fecha de nacimiento tipo Local Date
-            fechaNacimiento = LocalDate.of(Integer.parseInt(textoYearNacimiento),
-                    Integer.parseInt(textoMesNacimiento),
-                    Integer.parseInt(textoDiaNacimiento));
-            cliente = new ClienteNatural(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,
-                    textoEmail,fechaNacimiento);
+            fechaVencimiento = LocalDate.of(Integer.parseInt(textoAnoVencimiento),
+                    Integer.parseInt(textoMesVencimiento),
+                    Integer.parseInt(textoDiaVencimiento));
+            /////////// modificar el constructor que no tiene codigo en interfaz ///////////
+            producto = new ProductoPerecedero(textoNombreProd,textoNombreProd,textoDescripcionProd,
+                    valorProductoDouble,cantidadProdInt,fechaVencimiento);
 
         }
-        if (clienteJuridico.isSelected()){
-            textoNit = nitCliente.getText();
-            cliente = new ClienteJuridico(textoNombre,textoApellido,textoId,textoDireccion,textoTelefono,textoNit);
+        if (productoRefrigerado.isSelected()){
+            textoCodAprobacion = aprobacionCodigo.getText();
+            tempProducto = Double.parseDouble(productoTemperatura.getText());
+            ///7//Actualizar aqui tambien ///////////////////:
+            producto = new ProductoRefrigerado(textoNombreProd,textoNombreProd,textoDescripcionProd,
+                    valorProductoDouble,cantidadProdInt,textoCodAprobacion,tempProducto);
+        }
+        if (productoEnvasado.isSelected()){
+            textoDiaEnvasado = diaEnvasado.getText();
+            textoMesEnvasado = mesEnvasado.getText();
+            textoAnoEnvasado = anoEnvasado.getText();
+            //Se transforma los campos String a datos tipo entero
+            // Para convertirlos a una fecha de nacimiento tipo Local Date
+            fechaEnvasado = LocalDate.of(Integer.parseInt(textoAnoEnvasado),
+                    Integer.parseInt(textoMesEnvasado),
+                    Integer.parseInt(textoDiaEnvasado));
+            pesoEnvase = Double.parseDouble(productoPeso.getText());
+            /////////// modificar el constructor que no tiene codigo en interfaz ///////////
+            producto = new ProductoEnvasado(textoNombreProd,textoNombreProd,textoDescripcionProd,
+                    valorProductoDouble,cantidadProdInt,fechaEnvasado,pesoEnvase,PaisOrigen.COLOMBIA);
 
         }
 
         //Ahora ya tenemos un cliente, que puede ser Natural o Juridico
         //Se agrega ese cliente a la lista de clientes del almacen
-        almacen.agregarCliente(cliente);
+        almacen.agregarProducto(producto);
 
         /////// pruebas //////////
         //cada vez que se presiona el boton, se muestra la lista de clientes agregados
-        almacen.mostrarClientes();
+        almacen.mostrarProductos();
 
 
     }
 
 
 
-     */
+
 
 }
