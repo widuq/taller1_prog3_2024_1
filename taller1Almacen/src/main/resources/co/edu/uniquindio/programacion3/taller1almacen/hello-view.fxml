@@ -5,18 +5,20 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="476.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
+<AnchorPane prefHeight="440.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
    <children>
-      <VBox layoutX="-78.0" layoutY="222.0" prefHeight="200.0" prefWidth="100.0" />
-      <TabPane layoutX="-1.0" layoutY="-3.0" prefHeight="487.0" prefWidth="696.0" tabClosingPolicy="UNAVAILABLE">
+      <VBox layoutX="-78.0" layoutY="331.0" prefHeight="147.0" prefWidth="218.0" />
+      <TabPane layoutX="6.0" layoutY="7.0" prefHeight="472.0" prefWidth="953.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Cliente">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="953.0">
                      <children>
                         <Label layoutX="24.0" layoutY="30.0" text="Nombre: " />
                         <Label layoutX="25.0" layoutY="61.0" text="Apellido:" />
@@ -39,6 +41,22 @@
                         <Button fx:id="btnRegistrarCliente" layoutX="431.0" layoutY="44.0" mnemonicParsing="false" onAction="#hacerClick" text="Registrar Cliente" />
                         <TextField fx:id="mesNacimientoCliente" layoutX="212.0" layoutY="244.0" prefHeight="25.0" prefWidth="41.0" promptText="MM" />
                         <TextField fx:id="yearNacimientoCliente" layoutX="260.0" layoutY="244.0" prefHeight="25.0" prefWidth="54.0" promptText="AAAA" />
+                        <Button fx:id="btnclienteVisualizar" layoutX="431.0" layoutY="98.0" mnemonicParsing="false" onAction="#hacerClick" text="Visualizar Cliente" />
+                        <Button fx:id="btnclienteActualizar" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#hacerClick" prefHeight="25.0" prefWidth="108.0" text="Actualizar Cliente" />
+                        <Button fx:id="btnclienteEliminar" layoutX="431.0" layoutY="216.0" mnemonicParsing="false" onAction="#hacerClick" prefHeight="25.0" prefWidth="109.0" text="Eliminar Cliente" />
+                        <TableView layoutX="-7.0" layoutY="302.0" prefHeight="147.0" prefWidth="968.0">
+                          <columns>
+                            <TableColumn prefWidth="74.66665649414062" text="NOMBRE" />
+                            <TableColumn prefWidth="106.0" text="APELLIDO" />
+                              <TableColumn prefWidth="82.00001525878906" text="ID" />
+                              <TableColumn minWidth="8.66668701171875" prefWidth="97.33334350585938" text="DIRECCION" />
+                              <TableColumn minWidth="0.0" prefWidth="105.33334350585938" text="TELEFONO" />
+                              <TableColumn minWidth="0.0" prefWidth="91.33334350585938" text="TIPODECLIENTE" />
+                              <TableColumn minWidth="4.00006103515625" prefWidth="129.33331298828125" text="EMAIL" />
+                              <TableColumn minWidth="0.0" prefWidth="156.0" text="FECHANACIMIENTO" />
+                              <TableColumn minWidth="0.0" prefWidth="116.66668701171875" text="NIT" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
             </content>
@@ -79,12 +97,13 @@
                         <RadioButton fx:id="peruOrigen" layoutX="270.0" layoutY="418.0" mnemonicParsing="false" text="PERU" />
                         <RadioButton fx:id="argentinaOrigen" layoutX="330.0" layoutY="418.0" mnemonicParsing="false" text="ARGENTINA " />
                         <RadioButton fx:id="ecuadorOrigen" layoutX="439.0" layoutY="418.0" mnemonicParsing="false" text="ECUADOR" />
-
-                        <Button fx:id="btnproductoAgregar" layoutX="485.0" layoutY="36.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="141.0" text="Agregar Producto" />
                         <Label layoutX="10.0" layoutY="18.0" text="Codigo:" />
                         <TextField fx:id="codigoProducto" layoutX="58.0" layoutY="14.0" prefHeight="25.0" prefWidth="80.0" />
 
-                        <Button fx:id="productoAgregar" layoutX="485.0" layoutY="36.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="33.0" prefWidth="141.0" text="Agregar Producto" />
+                        <Button fx:id="productoAgregar" layoutX="515.0" layoutY="53.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="16.0" prefWidth="127.0" text="Agregar Producto" />
+                        <Button fx:id="productoActualizar" layoutX="516.0" layoutY="102.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="17.0" prefWidth="126.0" text="Actualizar Producto" />
+                        <Button fx:id="productoVisualizar" layoutX="516.0" layoutY="149.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="19.0" prefWidth="126.0" text="Visualizar Producto" />
+                        <Button fx:id="productoEliminar" layoutX="516.0" layoutY="198.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="20.0" prefWidth="125.0" text="Eliminar Producto" />
 
                      </children></AnchorPane>
             </content>
