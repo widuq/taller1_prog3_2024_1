@@ -493,5 +493,15 @@ public class HelloController {
         almacen.mostrarClientes();
 
 
+
+    }
+
+    //pruebas actualizar
+    @FXML
+    protected void hacerClickBtnActualizarCliente() {
+        hacerClick();
+        hacerClickBtnEliminarCliente();
+
+
     }
 }
