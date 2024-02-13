@@ -14,6 +14,7 @@ public class ClienteNatural extends Cliente{
     }
 
     public String getEmail() {
+
         return email;
     }
 
@@ -22,10 +23,12 @@ public class ClienteNatural extends Cliente{
     }
 
     public LocalDate getFechaNacimiento() {
+
         return fechaNacimiento;
     }
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
+
         this.fechaNacimiento = fechaNacimiento;
     }
 }

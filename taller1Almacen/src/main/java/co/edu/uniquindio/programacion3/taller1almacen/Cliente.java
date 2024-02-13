@@ -1,6 +1,7 @@
 package co.edu.uniquindio.programacion3.taller1almacen;
 
 public class Cliente {
+    //Se declaran lso atributos de la clase cliente
 
     private String nombre;
     private String apellido;
@@ -11,7 +12,7 @@ public class Cliente {
 
 // prueba githab 2
     public Cliente(String nombre, String apellido, String identificacion, String direccion,
-                   String telefono, TipoCliente tipoCliente) {
+                   String telefono, TipoCliente tipoCliente) {//Se crea el constructor
         this.nombre = nombre;
         this.apellido = apellido;
         this.identificacion = identificacion;
@@ -19,6 +20,8 @@ public class Cliente {
         this.telefono = telefono;
         this.tipoCliente = tipoCliente;
     }
+
+    //Se crean los getters y setters
 
     public String getNombre() {
         return nombre;
@@ -46,6 +49,7 @@ public class Cliente {
     }
 
     public void setApellido(String apellido) {
+
         this.apellido = apellido;
     }
 
