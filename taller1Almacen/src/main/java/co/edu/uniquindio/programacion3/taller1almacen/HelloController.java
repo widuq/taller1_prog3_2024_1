@@ -6,6 +6,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn;
+
+
 //librerias ratio button:
 
 import java.time.LocalDate;
@@ -181,20 +184,20 @@ public class HelloController {
         telefonoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("telefono"));
         tipoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("tipoCliente"));
 
-        if(clienteNatural.isSelected()){
+        //Para los atributos de las clases hijas:
+        TipoCliente tipoCliente = cliente.getTipoCliente();
+        if(tipoCliente == TipoCliente.NATURAL){
             emailClienteTabla.setCellValueFactory(new PropertyValueFactory<>("email"));
             fechaNacimientoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("fechaNacimiento"));
+            nitClienteTabla.setCellValueFactory(null);
 
-        }
-        if(clienteJuridico.isSelected())        {
+        }else{
+        //if(tipoCliente == TipoCliente.JURIDICO){
+            emailClienteTabla.setCellValueFactory(null);
+            fechaNacimientoClienteTabla.setCellValueFactory(null);
             nitClienteTabla.setCellValueFactory(new PropertyValueFactory<>("nit"));
         }
 
-
-
-       // nombreClienteTabla.setCellValueFactory(new PropertyValueFactory<Cliente,String>("apellido"));
-       // clientes = FXCollections.observableArrayList();
-       // tablaClientes.setItems(clientes);
 
     }
 
@@ -337,6 +340,44 @@ public class HelloController {
                 }
             }
         });
+
+        ///Escuchar seleccionar tabla : Para seleccionar un cliente especifico
+        tablaClientes.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                // Obtener los datos del cliente seleccionado
+                String nombre = newSelection.getNombre();
+                String apellido = newSelection.getApellido();
+                String id = newSelection.getIdentificacion();
+                String direccion = newSelection.getDireccion();
+                String telefono = newSelection.getTelefono();
+
+                // Establecer los datos en los campos de texto
+                nombreCliente.setText(nombre);
+                apellidoCliente.setText(apellido);
+                idCliente.setText(id);
+                direccionCliente.setText(direccion);
+                telefonoCliente.setText(telefono);
+
+                // Verificar el tipo de cliente y establecer los datos adicionales si es necesario
+                TipoCliente tipo = newSelection.getTipoCliente();
+                if (tipo == TipoCliente.NATURAL) {
+                    // Cliente natural
+                    ClienteNatural clienteNatural = (ClienteNatural) newSelection;
+                    String email = clienteNatural.getEmail();
+                    LocalDate fechaNacimiento = clienteNatural.getFechaNacimiento(); // Convertir a String según sea necesario
+                    emailCliente.setText(email);
+                    diaNacimientoCliente.setText(String.valueOf(fechaNacimiento.getDayOfMonth()));
+                    mesNacimientoCliente.setText(String.valueOf(fechaNacimiento.getMonthValue()));
+                    yearNacimientoCliente.setText(String.valueOf(fechaNacimiento.getYear()));
+                } else if (tipo == TipoCliente.JURIDICO) {
+                    // Cliente jurídico
+                    ClienteJuridico clienteJuridico = (ClienteJuridico) newSelection;
+                    String nit = clienteJuridico.getNit();
+                    nitCliente.setText(nit);
+                }
+            }
+        });
+
     }
 
     ////////////////////// controlador ventana productos ///////////////////////
@@ -431,6 +472,25 @@ public class HelloController {
         /////// pruebas //////////
         //cada vez que se presiona el boton, se muestra la lista de clientes agregados
         almacen.mostrarProductos();
+
+
+    }
+
+    @FXML
+    protected void hacerClickBtnEliminarCliente() {
+        // Obtener el ítem seleccionado
+        Cliente clienteSeleccionado = tablaClientes.getSelectionModel().getSelectedItem();
+
+// Verificar si hay un ítem seleccionado
+        if (clienteSeleccionado != null) {
+            // Eliminar el ítem seleccionado de la lista observable
+            clientes.remove(clienteSeleccionado);
+            almacen.eliminarCliente(clienteSeleccionado);
+        } else {
+            // Mostrar un mensaje de advertencia si no hay un ítem seleccionado
+            System.out.println("No se ha seleccionado ningún cliente para eliminar.");
+        }
+        almacen.mostrarClientes();
 
 
     }

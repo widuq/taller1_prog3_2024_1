@@ -44,6 +44,7 @@ public class Almacen {
 
     //Por ahora se imprime en consola y muesra los datos
     public void mostrarClientes() {
+        System.out.println("La cantidad de clientes es: " + listaClientes.size());
         for (Cliente cliente : listaClientes) {
             System.out.println("Nombre: " + cliente.getNombre());
             System.out.println("Apellido: " + cliente.getApellido());
@@ -90,5 +91,10 @@ public class Almacen {
             }
             System.out.println("----------------------------------------");
         }
+    }
+
+    // Método para eliminar un cliente de la lista
+    public void eliminarCliente(Cliente cliente) {
+        listaClientes.remove(cliente);
     }
 }
