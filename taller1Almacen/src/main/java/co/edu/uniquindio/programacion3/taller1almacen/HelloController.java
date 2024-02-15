@@ -115,6 +115,22 @@ public class HelloController {
     @FXML private TableColumn nitClienteTabla;
     ObservableList<Cliente> clientes; //Lista observable que contiene objetos tipo cliente
 
+    //Campos para presentar los productos de los clientes en una tabla:
+    @FXML private TableView<Producto> tablaProductos;
+    @FXML private TableColumn codigoProductoTabla;
+    @FXML private TableColumn nombreProductoTabla;
+    @FXML private TableColumn descripcionProductoTabla;
+    @FXML private TableColumn valorProductoTabla;
+    @FXML private TableColumn cantidadProductoTabla;
+    @FXML private TableColumn tipoProductoTabla;
+    @FXML private TableColumn fechaVencimientoProductoTabla;
+    @FXML private TableColumn codigoAprobacionProductoTabla;
+    @FXML private TableColumn temperaturaProductoTabla;
+    @FXML private TableColumn fechaEnvasadoProductoTabla;
+    @FXML private TableColumn pesoProductoTabla;
+    @FXML private TableColumn paisOrigenProductoTabla;
+    ObservableList<Producto> productos; //Lista observable que contiene objetos tipo producto
+
 
     //controlador boton Registrar Cliente
     @FXML
@@ -167,6 +183,7 @@ public class HelloController {
         //cada vez que se presiona el boton, se muestra la lista de clientes agregados
         almacen.mostrarClientes(); ////// BORRAR ESTO
 
+
         // Se crea una lista observable a partir de la lista de clientes de la clase almacen
         clientes = FXCollections.observableArrayList(almacen.getListaClientes());
         tablaClientes.setItems(clientes); //se coloca los elementos en la tabla
@@ -194,6 +211,7 @@ public class HelloController {
 
     }
 
+    //escuchador de eventos
     @FXML
     protected void initialize() {
         //Se crea un grupo de dos botones para optimizar la seleccion de opciones
@@ -451,6 +469,49 @@ public class HelloController {
 
         ///////borrar esto cuando funcione todo
         almacen.mostrarProductos();
+
+        // Se crea una lista observable a partir de la lista de productos de la clase almacen
+        productos = FXCollections.observableArrayList(almacen.getListaProductos());
+        tablaProductos.setItems(productos); //se coloca los elementos en la tabla de productos
+        // En cada celda se extrae la informacion de cada producto:
+        codigoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        nombreProductoTabla.setCellValueFactory(new PropertyValueFactory<>("nombreProducto"));
+        descripcionProductoTabla.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        valorProductoTabla.setCellValueFactory(new PropertyValueFactory<>("valorUnitario"));
+        cantidadProductoTabla.setCellValueFactory(new PropertyValueFactory<>("cantidadExistencias"));
+        tipoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("tipoProducto"));
+
+
+
+        //Para los atributos de las clases hijas:
+        TipoProducto tipoProducto = producto.getTipoProducto();
+        if(tipoProducto == TipoProducto.PERECEDERO){ //mostrar los datos de un producto perecedero
+            fechaVencimientoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("fechaVencimiento"));
+            codigoAprobacionProductoTabla.setCellValueFactory(null);
+            temperaturaProductoTabla.setCellValueFactory(null);
+            fechaEnvasadoProductoTabla.setCellValueFactory(null);
+            pesoProductoTabla.setCellValueFactory(null);
+            paisOrigenProductoTabla.setCellValueFactory(null);
+
+        }if (tipoProducto == TipoProducto.REFRIGERADO){
+            fechaVencimientoProductoTabla.setCellValueFactory(null);
+            codigoAprobacionProductoTabla.setCellValueFactory(new PropertyValueFactory<>("codAprovacion"));
+            temperaturaProductoTabla.setCellValueFactory(new PropertyValueFactory<>("tempRecomendada"));
+            fechaEnvasadoProductoTabla.setCellValueFactory(null);
+            pesoProductoTabla.setCellValueFactory(null);
+            paisOrigenProductoTabla.setCellValueFactory(null);
+
+        }
+        else{//mostrar los datos del cliente juridico
+            fechaVencimientoProductoTabla.setCellValueFactory(null);
+            codigoAprobacionProductoTabla.setCellValueFactory(null);
+            temperaturaProductoTabla.setCellValueFactory(null);
+            fechaEnvasadoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("fechaEnvasado"));
+            pesoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("pesoEnvase"));
+            paisOrigenProductoTabla.setCellValueFactory(new PropertyValueFactory<>("paisOrigen"));
+        }
+
+
 
 
     }
