@@ -493,7 +493,7 @@ public class HelloController {
             pesoProductoTabla.setCellValueFactory(null);
             paisOrigenProductoTabla.setCellValueFactory(null);
 
-        }if (tipoProducto == TipoProducto.REFRIGERADO){
+        } else if (tipoProducto == TipoProducto.REFRIGERADO){
             fechaVencimientoProductoTabla.setCellValueFactory(null);
             codigoAprobacionProductoTabla.setCellValueFactory(new PropertyValueFactory<>("codAprovacion"));
             temperaturaProductoTabla.setCellValueFactory(new PropertyValueFactory<>("tempRecomendada"));
