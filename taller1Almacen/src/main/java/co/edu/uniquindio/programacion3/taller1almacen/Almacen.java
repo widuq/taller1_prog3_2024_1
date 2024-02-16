@@ -102,4 +102,9 @@ public class Almacen {
     public void eliminarCliente(Cliente cliente) {
         listaClientes.remove(cliente);
     }
+
+    // Método para eliminar un producto de la lista
+    public void eliminarProducto(Producto producto) {
+        listaProductos.remove(producto);
+    }
 }

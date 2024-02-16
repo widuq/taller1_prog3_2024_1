@@ -1,3 +1,9 @@
+/*
+    Clase que controla los eventos y acciones del proyecto, realiza:
+    - Lectura de datos
+    - Escucha de botones que ejecuta acciones segun el boton presionado
+    - Presentacion de los datos guardados
+ */
 package co.edu.uniquindio.programacion3.taller1almacen;
 
 //paquetes necesarios para trabajar:
@@ -7,10 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
-
-
-//librerias ratio button:
-
 import java.time.LocalDate;
 
 
@@ -27,31 +29,24 @@ public class HelloController {
     private TextField direccionCliente;
     @FXML
     private TextField telefonoCliente;
-
     @FXML
     private TextField emailCliente;
-
     @FXML
     private TextField diaNacimientoCliente;
-
     @FXML
     private TextField mesNacimientoCliente;
-
     @FXML
     private TextField yearNacimientoCliente;
-
     @FXML
     private TextField nitCliente;
-
     @FXML
     private RadioButton clienteNatural;
-
     @FXML
     private RadioButton clienteJuridico;
 
     private ToggleGroup tipoCliente;
 
-    //////////// Los datos del producto ////////////////
+    //Para capturar Los datos del producto:
     @FXML
     private TextField codigoProducto;
     @FXML
@@ -87,6 +82,7 @@ public class HelloController {
     @FXML
     private TextField productoPeso;
 
+    // ratio buttons
     @FXML
     private RadioButton colombiaOrigen;
     @FXML
@@ -106,7 +102,7 @@ public class HelloController {
     private Almacen almacen = new Almacen();
 
 
-    //////////// pruebas tabla personas ///////////
+    //Campos para presentar los datos de los clientes en una tabla:
     @FXML private TableView<Cliente> tablaClientes;
     @FXML private TableColumn nombreClienteTabla;
     @FXML private TableColumn apellidoClienteTabla;
@@ -117,11 +113,26 @@ public class HelloController {
     @FXML private TableColumn emailClienteTabla;
     @FXML private TableColumn fechaNacimientoClienteTabla;
     @FXML private TableColumn nitClienteTabla;
-    ObservableList<Cliente> clientes;
+    ObservableList<Cliente> clientes; //Lista observable que contiene objetos tipo cliente
+
+    //Campos para presentar los productos de los clientes en una tabla:
+    @FXML private TableView<Producto> tablaProductos;
+    @FXML private TableColumn codigoProductoTabla;
+    @FXML private TableColumn nombreProductoTabla;
+    @FXML private TableColumn descripcionProductoTabla;
+    @FXML private TableColumn valorProductoTabla;
+    @FXML private TableColumn cantidadProductoTabla;
+    @FXML private TableColumn tipoProductoTabla;
+    @FXML private TableColumn fechaVencimientoProductoTabla;
+    @FXML private TableColumn codigoAprobacionProductoTabla;
+    @FXML private TableColumn temperaturaProductoTabla;
+    @FXML private TableColumn fechaEnvasadoProductoTabla;
+    @FXML private TableColumn pesoProductoTabla;
+    @FXML private TableColumn paisOrigenProductoTabla;
+    ObservableList<Producto> productos; //Lista observable que contiene objetos tipo producto
 
 
-
-    ///////////// controlador boton Registrar Cliente /////////////////
+    //controlador boton Registrar Cliente
     @FXML
     protected void hacerClick() {
         //obtener los datos del cliente ingresados
@@ -166,17 +177,17 @@ public class HelloController {
         }
 
         //Ahora ya tenemos un cliente, que puede ser Natural o Juridico
-        //Se agrega ese cliente a la lista de clientes del almacen
-        almacen.agregarCliente(cliente);
 
-        /////// pruebas //////////
+        almacen.agregarCliente(cliente); //Se agrega ese cliente a la lista de clientes del almacen
+
         //cada vez que se presiona el boton, se muestra la lista de clientes agregados
-        almacen.mostrarClientes();
+        almacen.mostrarClientes(); ////// BORRAR ESTO
 
-        // Se actualiza la lista de clientes en la tabla
+
+        // Se crea una lista observable a partir de la lista de clientes de la clase almacen
         clientes = FXCollections.observableArrayList(almacen.getListaClientes());
-        tablaClientes.setItems(clientes);
-        // Configuración de las celdas de la tabla
+        tablaClientes.setItems(clientes); //se coloca los elementos en la tabla
+        // En cada celda se extrae la informacion de cada cliente:
         nombreClienteTabla.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         apellidoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("apellido"));
         idClienteTabla.setCellValueFactory(new PropertyValueFactory<>("identificacion"));
@@ -186,13 +197,12 @@ public class HelloController {
 
         //Para los atributos de las clases hijas:
         TipoCliente tipoCliente = cliente.getTipoCliente();
-        if(tipoCliente == TipoCliente.NATURAL){
+        if(tipoCliente == TipoCliente.NATURAL){ //mostrar los datos de un cliente natural
             emailClienteTabla.setCellValueFactory(new PropertyValueFactory<>("email"));
             fechaNacimientoClienteTabla.setCellValueFactory(new PropertyValueFactory<>("fechaNacimiento"));
             nitClienteTabla.setCellValueFactory(null);
 
-        }else{
-        //if(tipoCliente == TipoCliente.JURIDICO){
+        }else{//mostrar los datos del cliente juridico
             emailClienteTabla.setCellValueFactory(null);
             fechaNacimientoClienteTabla.setCellValueFactory(null);
             nitClienteTabla.setCellValueFactory(new PropertyValueFactory<>("nit"));
@@ -201,33 +211,31 @@ public class HelloController {
 
     }
 
-
-    ////////////// controlador ratio buttons //////////////
-
-    // Cuando se elige entre cliente Natural o cliente Juridico
-    // los campos de datos que se deben completar se activan
-
-
+    //escuchador de eventos
     @FXML
     protected void initialize() {
-        //Se crea un grupo de dos botones para solo activar un ratiobutton a la vez
+        //Se crea un grupo de dos botones para optimizar la seleccion de opciones
+        // solo permite activar un ratiobutton a la vez dependiendo del tipo de cliente seleccionado
         tipoCliente = new ToggleGroup();
         clienteNatural.setToggleGroup(tipoCliente);
         clienteJuridico.setToggleGroup(tipoCliente);
 
-        //Campos por defecto deshabilitados
+        //Por defecto se deshabilitan los campos de ingreso de texto para:
+        //Datos cliente
         emailCliente.setDisable(true);
         diaNacimientoCliente.setDisable(true);
         mesNacimientoCliente.setDisable(true);
         yearNacimientoCliente.setDisable(true);
         nitCliente.setDisable(true);
 
+        //Pais de origen
         colombiaOrigen.setDisable(true);
         chileOrigen.setDisable(true);
         peruOrigen.setDisable(true);
         argentinaOrigen.setDisable(true);
         ecuadorOrigen.setDisable(true);
 
+        //tipo de producto
         tipoProducto = new ToggleGroup();
         productoPerecedero.setToggleGroup(tipoProducto);
         productoRefrigerado.setToggleGroup(tipoProducto);
@@ -239,7 +247,6 @@ public class HelloController {
         chileOrigen.setToggleGroup(tipoPais);
         peruOrigen.setToggleGroup(tipoPais);
         ecuadorOrigen.setToggleGroup(tipoPais);
-
 
         diaVencimiento.setDisable(true);
         mesVencimiento.setDisable(true);
@@ -282,12 +289,10 @@ public class HelloController {
             }
         });
 
-        // Lógica adicional para manejar la selección de los radio buttons de productos
-
-
+        // Habilitar o deshabilitar los rattioio buttons de los productos:
         tipoProducto.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
-                if (newValue == productoPerecedero) {
+                if (newValue == productoPerecedero) { //producto perecedero:
                     diaVencimiento.setDisable(false);
                     mesVencimiento.setDisable(false);
                     anoVencimiento.setDisable(false);
@@ -304,7 +309,7 @@ public class HelloController {
                     argentinaOrigen.setDisable(true);
                     ecuadorOrigen.setDisable(true);
 
-                } else if (newValue == productoRefrigerado) {
+                } else if (newValue == productoRefrigerado) { // producto refrigerado
                     diaVencimiento.setDisable(true);
                     mesVencimiento.setDisable(true);
                     anoVencimiento.setDisable(true);
@@ -321,7 +326,7 @@ public class HelloController {
                     argentinaOrigen.setDisable(true);
                     ecuadorOrigen.setDisable(true);
 
-                } else if (newValue == productoEnvasado) {
+                } else if (newValue == productoEnvasado) { //producto envasado
                     diaVencimiento.setDisable(true);
                     mesVencimiento.setDisable(true);
                     anoVencimiento.setDisable(true);
@@ -380,9 +385,8 @@ public class HelloController {
 
     }
 
-    ////////////////////// controlador ventana productos ///////////////////////
 
-    //por completar
+    //Seccion de control de la ventana productos
 
     @FXML
     protected void hacerClickBtnAgregarProducto() {
@@ -394,7 +398,6 @@ public class HelloController {
         Double valorProductoDouble = Double.parseDouble(textoValorProdTxt);
         String textoCantidadProdTxt = cantidadProducto.getText();
         Integer cantidadProdInt = Integer.parseInt(textoCantidadProdTxt);
-        //String textoTelefono = telefonoCliente.getText();
 
         //Obtener datos de las clases hijas de producto:
         //inicializados con un string vacio
@@ -407,47 +410,44 @@ public class HelloController {
         String textoMesEnvasado = "";
         String textoAnoEnvasado = "";
         Double pesoEnvase;
-        //String origenPais;
         PaisOrigen pais;
         LocalDate fechaEnvasado;
         LocalDate fechaVencimiento;
 
         Producto producto = null; //El tipo de Producto se asigna con los ratio buttons
 
-        //Cuando se elige un cliente Natural o Juridico, se obtienen datos especificos
-        // y se construye un cliente con los datos obtenidos
-        if (productoPerecedero.isSelected()) {
+        if (productoPerecedero.isSelected()) { //cuando de registra un producto perecedero:
             textoDiaVencimiento = diaVencimiento.getText();
             textoMesVencimiento = mesVencimiento.getText();
             textoAnoVencimiento = anoVencimiento.getText();
             //Se transforma los campos String a datos tipo entero
-            // Para convertirlos a una fecha de nacimiento tipo Local Date
+            // Para convertirlos a una fecha de tipo Local Date
             fechaVencimiento = LocalDate.of(Integer.parseInt(textoAnoVencimiento),
                     Integer.parseInt(textoMesVencimiento),
                     Integer.parseInt(textoDiaVencimiento));
-            /////////// modificar el constructor que no tiene codigo en interfaz ///////////
+            //se construye un producto perecedero con los datos obtenidos
             producto = new ProductoPerecedero(textoCodigoProd, textoNombreProd, textoDescripcionProd,
                     valorProductoDouble, cantidadProdInt, fechaVencimiento,TipoProducto.PERECEDERO);
 
         }
-        if (productoRefrigerado.isSelected()) {
+        if (productoRefrigerado.isSelected()) {//cuando de registra un producto refrigerado:
             textoCodAprobacion = aprobacionCodigo.getText();
             tempProducto = Double.parseDouble(productoTemperatura.getText());
-            ///7//Actualizar aqui tambien ///////////////////:
             producto = new ProductoRefrigerado(textoCodigoProd, textoNombreProd, textoDescripcionProd,
                     valorProductoDouble, cantidadProdInt, textoCodAprobacion, tempProducto,TipoProducto.REFRIGERADO);
         }
-        if (productoEnvasado.isSelected()) {
+        if (productoEnvasado.isSelected()) { //cuando de registra un producto envasado:
             textoDiaEnvasado = diaEnvasado.getText();
             textoMesEnvasado = mesEnvasado.getText();
             textoAnoEnvasado = anoEnvasado.getText();
             //Se transforma los campos String a datos tipo entero
-            // Para convertirlos a una fecha de nacimiento tipo Local Date
+            // Para convertirlos a una fecha de tipo Local Date
             fechaEnvasado = LocalDate.of(Integer.parseInt(textoAnoEnvasado),
                     Integer.parseInt(textoMesEnvasado),
                     Integer.parseInt(textoDiaEnvasado));
             pesoEnvase = Double.parseDouble(productoPeso.getText());
 
+            //asignacion del pais de origen
             if (colombiaOrigen.isSelected()) {
                 pais = PaisOrigen.COLOMBIA;
             } else if (chileOrigen.isSelected()) {
@@ -459,48 +459,114 @@ public class HelloController {
             } else {
                 pais = PaisOrigen.ECUADOR;
             }
-            /////////// modificar el constructor que no tiene codigo en interfaz ///////////
+            //se cres un producto envasdado
             producto = new ProductoEnvasado(textoCodigoProd, textoNombreProd, textoDescripcionProd,
                     valorProductoDouble, cantidadProdInt, fechaEnvasado, pesoEnvase, pais,TipoProducto.ENVASADO);
 
         }
 
-        //Ahora ya tenemos un cliente, que puede ser Natural o Juridico
-        //Se agrega ese cliente a la lista de clientes del almacen
-        almacen.agregarProducto(producto);
+        almacen.agregarProducto(producto); //Agregar el producto a la lista del almacen
 
-        /////// pruebas //////////
-        //cada vez que se presiona el boton, se muestra la lista de clientes agregados
+        ///////borrar esto cuando funcione todo
         almacen.mostrarProductos();
+
+        // Se crea una lista observable a partir de la lista de productos de la clase almacen
+        productos = FXCollections.observableArrayList(almacen.getListaProductos());
+        tablaProductos.setItems(productos); //se coloca los elementos en la tabla de productos
+        // En cada celda se extrae la informacion de cada producto:
+        codigoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        nombreProductoTabla.setCellValueFactory(new PropertyValueFactory<>("nombreProducto"));
+        descripcionProductoTabla.setCellValueFactory(new PropertyValueFactory<>("descripcion"));
+        valorProductoTabla.setCellValueFactory(new PropertyValueFactory<>("valorUnitario"));
+        cantidadProductoTabla.setCellValueFactory(new PropertyValueFactory<>("cantidadExistencias"));
+        tipoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("tipoProducto"));
+
+
+
+        //Para los atributos de las clases hijas:
+        TipoProducto tipoProducto = producto.getTipoProducto();
+        if(tipoProducto == TipoProducto.PERECEDERO){ //mostrar los datos de un producto perecedero
+            fechaVencimientoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("fechaVencimiento"));
+            codigoAprobacionProductoTabla.setCellValueFactory(null);
+            temperaturaProductoTabla.setCellValueFactory(null);
+            fechaEnvasadoProductoTabla.setCellValueFactory(null);
+            pesoProductoTabla.setCellValueFactory(null);
+            paisOrigenProductoTabla.setCellValueFactory(null);
+
+        } else if (tipoProducto == TipoProducto.REFRIGERADO){
+            fechaVencimientoProductoTabla.setCellValueFactory(null);
+            codigoAprobacionProductoTabla.setCellValueFactory(new PropertyValueFactory<>("codAprovacion"));
+            temperaturaProductoTabla.setCellValueFactory(new PropertyValueFactory<>("tempRecomendada"));
+            fechaEnvasadoProductoTabla.setCellValueFactory(null);
+            pesoProductoTabla.setCellValueFactory(null);
+            paisOrigenProductoTabla.setCellValueFactory(null);
+
+        }
+        else{//mostrar los datos del cliente juridico
+            fechaVencimientoProductoTabla.setCellValueFactory(null);
+            codigoAprobacionProductoTabla.setCellValueFactory(null);
+            temperaturaProductoTabla.setCellValueFactory(null);
+            fechaEnvasadoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("fechaEnvasado"));
+            pesoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("pesoEnvase"));
+            paisOrigenProductoTabla.setCellValueFactory(new PropertyValueFactory<>("paisOrigen"));
+        }
+
+
 
 
     }
 
     @FXML
     protected void hacerClickBtnEliminarCliente() {
-        // Obtener el ítem seleccionado
+        // Obtener el ítem seleccionado de la tabla observable
         Cliente clienteSeleccionado = tablaClientes.getSelectionModel().getSelectedItem();
 
-// Verificar si hay un ítem seleccionado
+        // Verificar si hay un ítem seleccionado
         if (clienteSeleccionado != null) {
             // Eliminar el ítem seleccionado de la lista observable
-            clientes.remove(clienteSeleccionado);
-            almacen.eliminarCliente(clienteSeleccionado);
+            clientes.remove(clienteSeleccionado); //se elimina el cliente mostrado de la tabla
+            almacen.eliminarCliente(clienteSeleccionado); //se elimina el cliente de la lista del almacen
         } else {
             // Mostrar un mensaje de advertencia si no hay un ítem seleccionado
             System.out.println("No se ha seleccionado ningún cliente para eliminar.");
         }
-        almacen.mostrarClientes();
-
-
+        almacen.mostrarClientes(); //para verificar que efectivamente funciona ////////borrarlo luego
 
     }
 
-    //pruebas actualizar
+    //Super codigo actualizador de clientes :)
     @FXML
     protected void hacerClickBtnActualizarCliente() {
         hacerClick();
         hacerClickBtnEliminarCliente();
+
+
+    }
+
+
+    @FXML
+    protected void hacerClickBtnEliminarProducto() {
+        // Obtener el ítem seleccionado de la tabla observable
+        Producto productoSeleccionado = tablaProductos.getSelectionModel().getSelectedItem();
+
+        // Verificar si hay un ítem seleccionado
+        if (productoSeleccionado != null) {
+            // Eliminar el ítem seleccionado de la lista observable
+            productos.remove(productoSeleccionado); //se elimina el cliente mostrado de la tabla
+            almacen.eliminarProducto(productoSeleccionado); //se elimina el cliente de la lista del almacen
+        } else {
+            // Mostrar un mensaje de advertencia si no hay un ítem seleccionado
+            System.out.println("No se ha seleccionado ningún cliente para eliminar.");
+        }
+        almacen.mostrarProductos(); //para verificar que efectivamente funciona ////////borrarlo luego
+
+    }
+
+    //Super codigo actualizador de clientes :)
+    @FXML
+    protected void hacerClickBtnActualizarProducto() {
+        hacerClickBtnAgregarProducto();
+        hacerClickBtnEliminarProducto();
 
 
     }

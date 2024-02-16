@@ -10,7 +10,7 @@ public class Cliente {
     private String telefono;
     private TipoCliente tipoCliente;
 
-// prueba githab 2
+    //constructor
     public Cliente(String nombre, String apellido, String identificacion, String direccion,
                    String telefono, TipoCliente tipoCliente) {//Se crea el constructor
         this.nombre = nombre;

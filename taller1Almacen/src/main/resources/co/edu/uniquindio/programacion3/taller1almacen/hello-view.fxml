@@ -11,14 +11,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="440.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
+<AnchorPane prefHeight="678.0" prefWidth="1002.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
    <children>
       <VBox layoutX="-78.0" layoutY="331.0" prefHeight="147.0" prefWidth="218.0" />
-      <TabPane layoutX="6.0" layoutY="7.0" prefHeight="472.0" prefWidth="953.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="6.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1124.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Cliente">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="953.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="953.0">
                      <children>
                         <Label layoutX="24.0" layoutY="30.0" text="Nombre: " />
                         <Label layoutX="25.0" layoutY="61.0" text="Apellido:" />
@@ -63,7 +63,7 @@
           </Tab>
           <Tab text="Producto">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="953.0">
                      <children>
                         <Label layoutX="12.0" layoutY="51.0" text="Nombre del producto:" />
                         <TextField fx:id="productoNombre" layoutX="145.0" layoutY="47.0" prefHeight="25.0" prefWidth="173.0" />
@@ -95,15 +95,31 @@
                         <RadioButton fx:id="colombiaOrigen" layoutX="95.0" layoutY="418.0" mnemonicParsing="false" text="COLOMBIA" />
                         <RadioButton fx:id="chileOrigen" layoutX="195.0" layoutY="418.0" mnemonicParsing="false" text="CHILE" />
                         <RadioButton fx:id="peruOrigen" layoutX="270.0" layoutY="418.0" mnemonicParsing="false" text="PERU" />
-                        <RadioButton fx:id="argentinaOrigen" layoutX="330.0" layoutY="418.0" mnemonicParsing="false" text="ARGENTINA " />
-                        <RadioButton fx:id="ecuadorOrigen" layoutX="439.0" layoutY="418.0" mnemonicParsing="false" text="ECUADOR" />
+                        <RadioButton fx:id="argentinaOrigen" layoutX="334.0" layoutY="418.0" mnemonicParsing="false" text="ARGENTINA " />
+                        <RadioButton fx:id="ecuadorOrigen" layoutX="441.0" layoutY="418.0" mnemonicParsing="false" text="ECUADOR" />
                         <Label layoutX="10.0" layoutY="18.0" text="Codigo:" />
                         <TextField fx:id="codigoProducto" layoutX="58.0" layoutY="14.0" prefHeight="25.0" prefWidth="80.0" />
 
                         <Button fx:id="productoAgregar" layoutX="515.0" layoutY="53.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="16.0" prefWidth="127.0" text="Agregar Producto" />
-                        <Button fx:id="productoActualizar" layoutX="516.0" layoutY="102.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="17.0" prefWidth="126.0" text="Actualizar Producto" />
+                        <Button fx:id="productoActualizar" layoutX="516.0" layoutY="102.0" mnemonicParsing="false" onAction="#hacerClickBtnActualizarProducto" prefHeight="17.0" prefWidth="126.0" text="Actualizar Producto" />
                         <Button fx:id="productoVisualizar" layoutX="516.0" layoutY="149.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="19.0" prefWidth="126.0" text="Visualizar Producto" />
-                        <Button fx:id="productoEliminar" layoutX="516.0" layoutY="198.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="20.0" prefWidth="125.0" text="Eliminar Producto" />
+                        <Button fx:id="productoEliminar" layoutX="516.0" layoutY="198.0" mnemonicParsing="false" onAction="#hacerClickBtnEliminarProducto" prefHeight="20.0" prefWidth="125.0" text="Eliminar Producto" />
+                        <TableView fx:id="tablaProductos" layoutX="15.0" layoutY="448.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="147.0" prefWidth="1067.0">
+                           <columns>
+                              <TableColumn fx:id="codigoProductoTabla" prefWidth="51.0" text="CODIGO" />
+                              <TableColumn fx:id="nombreProductoTabla" prefWidth="78.0" text="PRODUCTO" />
+                              <TableColumn fx:id="descripcionProductoTabla" prefWidth="101.0" text="DESCRIPCION" />
+                              <TableColumn fx:id="valorProductoTabla" minWidth="8.66668701171875" prefWidth="90.0" text="VALOR" />
+                              <TableColumn fx:id="cantidadProductoTabla" minWidth="0.0" prefWidth="94.0" text="CANTIDAD" />
+                              <TableColumn fx:id="tipoProductoTabla" minWidth="0.0" prefWidth="93.0" text="TIPO PRODUCTO" />
+                              <TableColumn fx:id="fechaVencimientoProductoTabla" minWidth="4.00006103515625" prefWidth="92.0" text="FECHA VENCIMIENTO" />
+                              <TableColumn fx:id="codigoAprobacionProductoTabla" minWidth="0.0" prefWidth="99.0" text="COD APROVACION" />
+                              <TableColumn fx:id="temperaturaProductoTabla" minWidth="0.0" prefWidth="88.0" text="TEMP" />
+                              <TableColumn fx:id="fechaEnvasadoProductoTabla" minWidth="4.00006103515625" prefWidth="111.0" text="FECHA ENVASE" />
+                              <TableColumn fx:id="pesoProductoTabla" minWidth="0.0" prefWidth="85.0" text="PESO" />
+                              <TableColumn fx:id="paisOrigenProductoTabla" minWidth="0.0" prefWidth="72.0" text="ORIGEN" />
+                           </columns>
+                        </TableView>
 
                      </children></AnchorPane>
             </content>
