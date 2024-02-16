@@ -447,7 +447,7 @@ public class HelloController {
                     Integer.parseInt(textoDiaEnvasado));
             pesoEnvase = Double.parseDouble(productoPeso.getText());
 
-            //asignacion del pais de otigen
+            //asignacion del pais de origen
             if (colombiaOrigen.isSelected()) {
                 pais = PaisOrigen.COLOMBIA;
             } else if (chileOrigen.isSelected()) {
@@ -539,6 +539,34 @@ public class HelloController {
     protected void hacerClickBtnActualizarCliente() {
         hacerClick();
         hacerClickBtnEliminarCliente();
+
+
+    }
+
+
+    @FXML
+    protected void hacerClickBtnEliminarProducto() {
+        // Obtener el ítem seleccionado de la tabla observable
+        Producto productoSeleccionado = tablaProductos.getSelectionModel().getSelectedItem();
+
+        // Verificar si hay un ítem seleccionado
+        if (productoSeleccionado != null) {
+            // Eliminar el ítem seleccionado de la lista observable
+            productos.remove(productoSeleccionado); //se elimina el cliente mostrado de la tabla
+            almacen.eliminarProducto(productoSeleccionado); //se elimina el cliente de la lista del almacen
+        } else {
+            // Mostrar un mensaje de advertencia si no hay un ítem seleccionado
+            System.out.println("No se ha seleccionado ningún cliente para eliminar.");
+        }
+        almacen.mostrarProductos(); //para verificar que efectivamente funciona ////////borrarlo luego
+
+    }
+
+    //Super codigo actualizador de clientes :)
+    @FXML
+    protected void hacerClickBtnActualizarProducto() {
+        hacerClickBtnAgregarProducto();
+        hacerClickBtnEliminarProducto();
 
 
     }
