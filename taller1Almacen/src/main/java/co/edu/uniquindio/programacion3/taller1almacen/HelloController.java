@@ -103,9 +103,6 @@ public class HelloController {
     //controlador boton Registrar Cliente
     @FXML
     protected void hacerClick() {
-        //activar botones
-        btnclienteActualizar.setDisable(false);
-        btnclienteEliminar.setDisable(false);
         //obtener los datos del cliente ingresados
         String textoNombre = nombreCliente.getText();
         String textoApellido = apellidoCliente.getText();
@@ -176,9 +173,6 @@ public class HelloController {
 
     @FXML
     protected void hacerClickBtnAgregarProducto() {
-        //activar botones
-        productoActualizar.setDisable(false);
-        productoEliminar.setDisable(false);
         //obtener los datos del producto ingresados
         String textoCodigoProd = codigoProducto.getText();
         String textoNombreProd = productoNombre.getText();
@@ -266,9 +260,6 @@ public class HelloController {
         valorProductoTabla.setCellValueFactory(new PropertyValueFactory<>("valorUnitario"));
         cantidadProductoTabla.setCellValueFactory(new PropertyValueFactory<>("cantidadExistencias"));
         tipoProductoTabla.setCellValueFactory(new PropertyValueFactory<>("tipoProducto"));
-
-
-
         //Para los atributos de las clases hijas:
         TipoProducto tipoProducto = producto.getTipoProducto();
         if(tipoProducto == TipoProducto.PERECEDERO){ //mostrar los datos de un producto perecedero
@@ -310,6 +301,8 @@ public class HelloController {
             // Eliminar el ítem seleccionado de la lista observable
             clientes.remove(clienteSeleccionado); //se elimina el cliente mostrado de la tabla
             almacen.eliminarCliente(clienteSeleccionado); //se elimina el cliente de la lista del almacen
+            btnclienteActualizar.setDisable(true);
+            btnclienteEliminar.setDisable(true);
         } else {
             // Mostrar un mensaje de advertencia si no hay un ítem seleccionado
             System.out.println("No se ha seleccionado ningún cliente para eliminar.");
@@ -529,6 +522,15 @@ public class HelloController {
             }
         });
 
-    }
+        tablaProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null) {
+                productoActualizar.setDisable(false);
+                productoEliminar.setDisable(false);
+            }
+        });
+
+
+
+        }
 
 }
