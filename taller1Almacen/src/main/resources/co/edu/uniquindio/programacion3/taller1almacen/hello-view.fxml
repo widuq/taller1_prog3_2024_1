@@ -42,8 +42,8 @@
                         <TextField fx:id="mesNacimientoCliente" layoutX="212.0" layoutY="244.0" prefHeight="25.0" prefWidth="41.0" promptText="MM" />
                         <TextField fx:id="yearNacimientoCliente" layoutX="260.0" layoutY="244.0" prefHeight="25.0" prefWidth="54.0" promptText="AAAA" />
                         <Button fx:id="btnclienteVisualizar" layoutX="431.0" layoutY="98.0" mnemonicParsing="false" onAction="#hacerClick" text="Visualizar Cliente" />
-                        <Button fx:id="btnclienteActualizar" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#hacerClick" prefHeight="25.0" prefWidth="108.0" text="Actualizar Cliente" />
-                        <Button fx:id="btnclienteEliminar" layoutX="431.0" layoutY="216.0" mnemonicParsing="false" onAction="#hacerClick" prefHeight="25.0" prefWidth="109.0" text="Eliminar Cliente" />
+                        <Button fx:id="btnclienteActualizar" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#hacerClickBtnActualizarCliente" prefHeight="25.0" prefWidth="108.0" text="Actualizar Cliente" />
+                        <Button fx:id="btnclienteEliminar" layoutX="431.0" layoutY="216.0" mnemonicParsing="false" onAction="#hacerClickBtnEliminarCliente" prefHeight="25.0" prefWidth="109.0" text="Eliminar Cliente" />
                         <TableView fx:id="tablaClientes" layoutX="-7.0" layoutY="302.0" prefHeight="147.0" prefWidth="968.0">
                           <columns>
                             <TableColumn fx:id="nombreClienteTabla" prefWidth="74.66665649414062" text="NOMBRE" />
