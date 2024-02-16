@@ -11,113 +11,112 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="678.0" prefWidth="1002.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
+<AnchorPane prefHeight="777.0" prefWidth="1105.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.programacion3.taller1almacen.HelloController">
    <children>
       <VBox layoutX="-78.0" layoutY="331.0" prefHeight="147.0" prefWidth="218.0" />
-      <TabPane layoutX="6.0" layoutY="7.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1124.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutX="6.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="807.0" prefWidth="1099.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Cliente">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="447.0" prefWidth="953.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="735.0" prefWidth="1083.0">
                      <children>
-                        <Label layoutX="24.0" layoutY="30.0" text="Nombre: " />
-                        <Label layoutX="25.0" layoutY="61.0" text="Apellido:" />
-                        <Label layoutX="24.0" layoutY="94.0" text="Identificación:" />
-                        <Label layoutX="24.0" layoutY="124.0" text="Dirección:" />
-                        <Label layoutX="24.0" layoutY="155.0" text="Teléfono:" />
-                        <RadioButton fx:id="clienteNatural" layoutX="27.0" layoutY="186.0" mnemonicParsing="false" text="Cliente Natural" />
-                        <RadioButton fx:id="clienteJuridico" layoutX="185.0" layoutY="186.0" mnemonicParsing="false" text="Cliente Jurídico" />
-                        <Label layoutX="24.0" layoutY="221.0" text="Email:" />
-                        <Label layoutX="26.0" layoutY="248.0" text="Fecha de Nacimiento:" />
-                        <Label layoutX="26.0" layoutY="277.0" text="Nit:" />
-                        <TextField fx:id="nombreCliente" layoutX="87.0" layoutY="26.0" />
-                        <TextField fx:id="apellidoCliente" layoutX="87.0" layoutY="57.0" />
-                        <TextField fx:id="idCliente" layoutX="111.0" layoutY="90.0" />
-                        <TextField fx:id="direccionCliente" layoutX="111.0" layoutY="120.0" />
-                        <TextField fx:id="telefonoCliente" layoutX="111.0" layoutY="151.0" />
-                        <TextField fx:id="emailCliente" layoutX="87.0" layoutY="217.0" />
-                        <TextField fx:id="diaNacimientoCliente" layoutX="162.0" layoutY="244.0" prefHeight="25.0" prefWidth="40.0" promptText="DD" />
-                        <TextField fx:id="nitCliente" layoutX="61.0" layoutY="273.0" />
-                        <Button fx:id="btnRegistrarCliente" layoutX="431.0" layoutY="44.0" mnemonicParsing="false" onAction="#hacerClick" text="Registrar Cliente" />
-                        <TextField fx:id="mesNacimientoCliente" layoutX="212.0" layoutY="244.0" prefHeight="25.0" prefWidth="41.0" promptText="MM" />
-                        <TextField fx:id="yearNacimientoCliente" layoutX="260.0" layoutY="244.0" prefHeight="25.0" prefWidth="54.0" promptText="AAAA" />
-                        <Button fx:id="btnclienteVisualizar" layoutX="431.0" layoutY="98.0" mnemonicParsing="false" onAction="#hacerClick" text="Visualizar Cliente" />
-                        <Button fx:id="btnclienteActualizar" layoutX="430.0" layoutY="159.0" mnemonicParsing="false" onAction="#hacerClickBtnActualizarCliente" prefHeight="25.0" prefWidth="108.0" text="Actualizar Cliente" />
-                        <Button fx:id="btnclienteEliminar" layoutX="431.0" layoutY="216.0" mnemonicParsing="false" onAction="#hacerClickBtnEliminarCliente" prefHeight="25.0" prefWidth="109.0" text="Eliminar Cliente" />
-                        <TableView fx:id="tablaClientes" layoutX="-7.0" layoutY="302.0" prefHeight="147.0" prefWidth="968.0">
+                        <Label layoutX="8.0" layoutY="30.0" prefHeight="17.0" prefWidth="66.0" text="Nombre: " />
+                        <Label layoutX="9.0" layoutY="61.0" prefHeight="17.0" prefWidth="63.0" text="Apellido:" />
+                        <Label layoutX="9.0" layoutY="94.0" prefHeight="17.0" prefWidth="78.0" text="Identificación:" />
+                        <Label layoutX="11.0" layoutY="127.0" prefHeight="17.0" prefWidth="59.0" text="Dirección:" />
+                        <Label layoutX="10.0" layoutY="155.0" prefHeight="21.0" prefWidth="57.0" text="Teléfono:" />
+                        <RadioButton fx:id="clienteNatural" layoutX="168.0" layoutY="194.0" mnemonicParsing="false" text="Cliente Natural" />
+                        <RadioButton fx:id="clienteJuridico" layoutX="358.0" layoutY="194.0" mnemonicParsing="false" text="Cliente Jurídico" />
+                        <Label layoutX="13.0" layoutY="233.0" prefHeight="17.0" prefWidth="37.0" text="Email:" />
+                        <Label layoutX="15.0" layoutY="269.0" prefHeight="17.0" prefWidth="119.0" text="Fecha de Nacimiento:" />
+                        <Label layoutX="16.0" layoutY="298.0" prefHeight="17.0" prefWidth="28.0" text="Nit:" />
+                        <TextField fx:id="nombreCliente" layoutX="109.0" layoutY="26.0" prefHeight="25.0" prefWidth="453.0" />
+                        <TextField fx:id="apellidoCliente" layoutX="108.0" layoutY="57.0" prefHeight="25.0" prefWidth="454.0" />
+                        <TextField fx:id="idCliente" layoutX="107.0" layoutY="90.0" prefHeight="25.0" prefWidth="455.0" />
+                        <TextField fx:id="direccionCliente" layoutX="109.0" layoutY="120.0" prefHeight="25.0" prefWidth="451.0" />
+                        <TextField fx:id="telefonoCliente" layoutX="108.0" layoutY="151.0" prefHeight="25.0" prefWidth="452.0" />
+                        <TextField fx:id="emailCliente" layoutX="110.0" layoutY="229.0" prefHeight="25.0" prefWidth="447.0" />
+                        <TextField fx:id="diaNacimientoCliente" layoutX="162.0" layoutY="265.0" prefHeight="25.0" prefWidth="40.0" promptText="DD" />
+                        <TextField fx:id="nitCliente" layoutX="109.0" layoutY="294.0" prefHeight="25.0" prefWidth="448.0" />
+                        <Button fx:id="btnRegistrarCliente" layoutX="632.0" layoutY="54.0" mnemonicParsing="false" onAction="#hacerClick" prefHeight="47.0" prefWidth="105.0" text="Registrar Cliente" />
+                        <TextField fx:id="mesNacimientoCliente" layoutX="218.0" layoutY="265.0" prefHeight="25.0" prefWidth="41.0" promptText="MM" />
+                        <TextField fx:id="yearNacimientoCliente" layoutX="282.0" layoutY="265.0" prefHeight="25.0" prefWidth="54.0" promptText="AAAA" />
+                        <Button fx:id="btnclienteActualizar" layoutX="632.0" layoutY="136.0" mnemonicParsing="false" onAction="#hacerClickBtnActualizarCliente" prefHeight="44.0" prefWidth="108.0" text="Actualizar Cliente" />
+                        <Button fx:id="btnclienteEliminar" layoutX="502.0" layoutY="519.0" mnemonicParsing="false" onAction="#hacerClickBtnEliminarCliente" prefHeight="38.0" prefWidth="109.0" text="Eliminar Cliente" />
+                        <TableView fx:id="tablaClientes" layoutX="13.0" layoutY="346.0" prefHeight="132.0" prefWidth="1046.0">
                           <columns>
-                            <TableColumn fx:id="nombreClienteTabla" prefWidth="74.66665649414062" text="NOMBRE" />
-                            <TableColumn fx:id="apellidoClienteTabla" prefWidth="106.0" text="APELLIDO" />
-                              <TableColumn fx:id="idClienteTabla" prefWidth="82.00001525878906" text="ID" />
-                              <TableColumn fx:id="direccionClienteTabla" minWidth="8.66668701171875" prefWidth="97.33334350585938" text="DIRECCION" />
-                              <TableColumn fx:id="telefonoClienteTabla" minWidth="0.0" prefWidth="105.33334350585938" text="TELEFONO" />
-                              <TableColumn fx:id="tipoClienteTabla" minWidth="0.0" prefWidth="91.33334350585938" text="TIPODECLIENTE" />
-                              <TableColumn fx:id="emailClienteTabla" minWidth="4.00006103515625" prefWidth="129.33331298828125" text="EMAIL" />
-                              <TableColumn fx:id="fechaNacimientoClienteTabla" minWidth="0.0" prefWidth="156.0" text="FECHANACIMIENTO" />
-                              <TableColumn fx:id="nitClienteTabla" minWidth="0.0" prefWidth="116.66668701171875" text="NIT" />
+                            <TableColumn fx:id="nombreClienteTabla" prefWidth="118.66668128967285" text="NOMBRE" />
+                            <TableColumn fx:id="apellidoClienteTabla" prefWidth="103.33331298828125" text="APELLIDO" />
+                              <TableColumn fx:id="idClienteTabla" prefWidth="87.333251953125" text="ID" />
+                              <TableColumn fx:id="telefonoClienteTabla" minWidth="0.0" prefWidth="105.3333740234375" text="TELEFONO" />
+                              <TableColumn fx:id="tipoClienteTabla" minWidth="0.0" prefWidth="124.66668701171875" text="TIPODECLIENTE" />
+                              <TableColumn fx:id="emailClienteTabla" minWidth="4.00006103515625" prefWidth="110.66665649414062" text="EMAIL" />
+                              <TableColumn fx:id="fechaNacimientoClienteTabla" minWidth="0.0" prefWidth="147.99993896484375" text="FECHANACIMIENTO" />
+                              <TableColumn fx:id="nitClienteTabla" minWidth="0.0" prefWidth="103.3333740234375" text="NIT" />
+                              <TableColumn fx:id="direccionClienteTabla" minWidth="8.66668701171875" prefWidth="140.66668701171875" text="DIRECCION" />
                           </columns>
                         </TableView>
+                        <Label layoutX="11.0" layoutY="194.0" prefHeight="17.0" prefWidth="107.0" text="Tipo de Cliente:" />
                      </children>
                   </AnchorPane>
             </content>
           </Tab>
           <Tab text="Producto">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="542.0" prefWidth="953.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="697.0" prefWidth="1099.0">
                      <children>
                         <Label layoutX="12.0" layoutY="51.0" text="Nombre del producto:" />
-                        <TextField fx:id="productoNombre" layoutX="145.0" layoutY="47.0" prefHeight="25.0" prefWidth="173.0" />
-                        <Label layoutX="14.0" layoutY="79.0" text="Descripcion del producto:" />
-                        <TextField fx:id="productoDescripcion" layoutX="156.0" layoutY="75.0" prefHeight="25.0" prefWidth="152.0" />
-                        <Label layoutX="14.0" layoutY="115.0" text="Valor: " />
-                        <Label layoutX="14.0" layoutY="153.0" text="Cantidad:" />
-                        <TextField fx:id="valorProducto" layoutX="48.0" layoutY="111.0" prefHeight="25.0" prefWidth="80.0" />
-                        <TextField fx:id="cantidadProducto" layoutX="74.0" layoutY="149.0" prefHeight="25.0" prefWidth="57.0" />
-                        <RadioButton fx:id="productoPerecedero" layoutX="144.0" layoutY="194.0" mnemonicParsing="false" text="Perecedero " />
-                        <Label layoutX="10.0" layoutY="194.0" prefHeight="17.0" prefWidth="106.0" text="Tipo de producto:" />
-                        <RadioButton fx:id="productoRefrigerado" layoutX="259.0" layoutY="194.0" mnemonicParsing="false" text="Refrigerado" />
-                        <RadioButton fx:id="productoEnvasado" layoutX="367.0" layoutY="194.0" mnemonicParsing="false" text="Envasado" />
+                        <TextField fx:id="productoNombre" layoutX="167.0" layoutY="55.0" prefHeight="25.0" prefWidth="529.0" />
+                        <Label layoutX="15.0" layoutY="91.0" text="Descripcion del producto:" />
+                        <TextField fx:id="productoDescripcion" layoutX="167.0" layoutY="87.0" prefHeight="25.0" prefWidth="529.0" />
+                        <Label layoutX="14.0" layoutY="127.0" text="Valor: " />
+                        <Label layoutX="14.0" layoutY="165.0" text="Cantidad:" />
+                        <TextField fx:id="valorProducto" layoutX="165.0" layoutY="123.0" prefHeight="25.0" prefWidth="533.0" />
+                        <TextField fx:id="cantidadProducto" layoutX="166.0" layoutY="161.0" prefHeight="25.0" prefWidth="531.0" />
+                        <RadioButton fx:id="productoPerecedero" layoutX="166.0" layoutY="209.0" mnemonicParsing="false" text="Perecedero " />
+                        <Label layoutX="12.0" layoutY="209.0" prefHeight="17.0" prefWidth="106.0" text="Tipo de producto:" />
+                        <RadioButton fx:id="productoRefrigerado" layoutX="400.0" layoutY="209.0" mnemonicParsing="false" text="Refrigerado" />
+                        <RadioButton fx:id="productoEnvasado" layoutX="621.0" layoutY="209.0" mnemonicParsing="false" text="Envasado" />
                         <Label layoutX="12.0" layoutY="248.0" text="Fecha Vencimiento:" />
-                        <TextField fx:id="diaVencimiento" layoutX="120.0" layoutY="244.0" prefHeight="25.0" prefWidth="34.0" promptText="DD" />
-                        <TextField fx:id="mesVencimiento" layoutX="158.0" layoutY="244.0" prefHeight="25.0" prefWidth="35.0" promptText="MM" />
-                        <TextField fx:id="anoVencimiento" layoutX="199.0" layoutY="244.0" prefHeight="25.0" prefWidth="49.0" promptText="AAAA" />
+                        <TextField fx:id="diaVencimiento" layoutX="168.0" layoutY="244.0" prefHeight="25.0" prefWidth="34.0" promptText="DD" />
+                        <TextField fx:id="mesVencimiento" layoutX="224.0" layoutY="244.0" prefHeight="25.0" prefWidth="35.0" promptText="MM" />
+                        <TextField fx:id="anoVencimiento" layoutX="283.0" layoutY="244.0" prefHeight="25.0" prefWidth="49.0" promptText="AAAA" />
                         <Label layoutX="15.0" layoutY="286.0" prefHeight="17.0" prefWidth="113.0" text="Código Aprobación:" />
-                        <TextField fx:id="aprobacionCodigo" layoutX="133.0" layoutY="282.0" prefHeight="25.0" prefWidth="119.0" />
-                        <TextField fx:id="productoTemperatura" layoutX="101.0" layoutY="314.0" prefHeight="12.0" prefWidth="54.0" />
-                        <Label layoutX="15.0" layoutY="318.0" prefHeight="17.0" prefWidth="78.0" text="Temperatura:" />
-                        <Label layoutX="11.0" layoutY="355.0" text="Fecha Envasado:" />
-                        <TextField fx:id="diaEnvasado" layoutX="111.0" layoutY="351.0" prefHeight="25.0" prefWidth="34.0" promptText="DD" />
-                        <TextField fx:id="mesEnvasado" layoutX="150.0" layoutY="351.0" prefHeight="25.0" prefWidth="35.0" promptText="MM" />
-                        <TextField fx:id="anoEnvasado" layoutX="199.0" layoutY="351.0" prefHeight="25.0" prefWidth="49.0" promptText="AAAA" />
-                        <Label layoutX="11.0" layoutY="388.0" text="Peso:" />
-                        <TextField fx:id="productoPeso" layoutX="43.0" layoutY="384.0" prefHeight="25.0" prefWidth="57.0" />
-                        <Label layoutX="11.0" layoutY="418.0" text="Pais de Origen:" />
-                        <RadioButton fx:id="colombiaOrigen" layoutX="95.0" layoutY="418.0" mnemonicParsing="false" text="COLOMBIA" />
-                        <RadioButton fx:id="chileOrigen" layoutX="195.0" layoutY="418.0" mnemonicParsing="false" text="CHILE" />
-                        <RadioButton fx:id="peruOrigen" layoutX="270.0" layoutY="418.0" mnemonicParsing="false" text="PERU" />
-                        <RadioButton fx:id="argentinaOrigen" layoutX="334.0" layoutY="418.0" mnemonicParsing="false" text="ARGENTINA " />
-                        <RadioButton fx:id="ecuadorOrigen" layoutX="441.0" layoutY="418.0" mnemonicParsing="false" text="ECUADOR" />
+                        <TextField fx:id="aprobacionCodigo" layoutX="172.0" layoutY="282.0" prefHeight="25.0" prefWidth="163.0" />
+                        <TextField fx:id="productoTemperatura" layoutX="555.0" layoutY="282.0" prefHeight="25.0" prefWidth="138.0" />
+                        <Label layoutX="467.0" layoutY="286.0" prefHeight="17.0" prefWidth="79.0" text="Temperatura:" />
+                        <Label layoutX="12.0" layoutY="332.0" text="Fecha Envasado:" />
+                        <TextField fx:id="diaEnvasado" layoutX="172.0" layoutY="328.0" prefHeight="25.0" prefWidth="34.0" promptText="DD" />
+                        <TextField fx:id="mesEnvasado" layoutX="225.0" layoutY="328.0" prefHeight="25.0" prefWidth="35.0" promptText="MM" />
+                        <TextField fx:id="anoEnvasado" layoutX="283.0" layoutY="328.0" prefHeight="25.0" prefWidth="49.0" promptText="AAAA" />
+                        <Label layoutX="467.0" layoutY="323.0" text="Peso:" />
+                        <TextField fx:id="productoPeso" layoutX="558.0" layoutY="328.0" prefHeight="25.0" prefWidth="135.0" />
+                        <Label layoutX="15.0" layoutY="371.0" text="Pais de Origen:" />
+                        <RadioButton fx:id="colombiaOrigen" layoutX="167.0" layoutY="371.0" mnemonicParsing="false" text="COLOMBIA" />
+                        <RadioButton fx:id="chileOrigen" layoutX="278.0" layoutY="371.0" mnemonicParsing="false" text="CHILE" />
+                        <RadioButton fx:id="peruOrigen" layoutX="358.0" layoutY="371.0" mnemonicParsing="false" text="PERU" />
+                        <RadioButton fx:id="argentinaOrigen" layoutX="436.0" layoutY="371.0" mnemonicParsing="false" text="ARGENTINA " />
+                        <RadioButton fx:id="ecuadorOrigen" layoutX="559.0" layoutY="371.0" mnemonicParsing="false" text="ECUADOR" />
                         <Label layoutX="10.0" layoutY="18.0" text="Codigo:" />
-                        <TextField fx:id="codigoProducto" layoutX="58.0" layoutY="14.0" prefHeight="25.0" prefWidth="80.0" />
+                        <TextField fx:id="codigoProducto" layoutX="166.0" layoutY="22.0" prefHeight="25.0" prefWidth="531.0" />
 
-                        <Button fx:id="productoAgregar" layoutX="515.0" layoutY="53.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="16.0" prefWidth="127.0" text="Agregar Producto" />
-                        <Button fx:id="productoActualizar" layoutX="516.0" layoutY="102.0" mnemonicParsing="false" onAction="#hacerClickBtnActualizarProducto" prefHeight="17.0" prefWidth="126.0" text="Actualizar Producto" />
-                        <Button fx:id="productoVisualizar" layoutX="516.0" layoutY="149.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="19.0" prefWidth="126.0" text="Visualizar Producto" />
-                        <Button fx:id="productoEliminar" layoutX="516.0" layoutY="198.0" mnemonicParsing="false" onAction="#hacerClickBtnEliminarProducto" prefHeight="20.0" prefWidth="125.0" text="Eliminar Producto" />
-                        <TableView fx:id="tablaProductos" layoutX="15.0" layoutY="448.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="147.0" prefWidth="1067.0">
+                        <Button fx:id="productoAgregar" layoutX="734.0" layoutY="50.0" mnemonicParsing="false" onAction="#hacerClickBtnAgregarProducto" prefHeight="46.0" prefWidth="125.0" text="Agregar Producto" />
+                        <Button fx:id="productoActualizar" layoutX="734.0" layoutY="136.0" mnemonicParsing="false" onAction="#hacerClickBtnActualizarProducto" prefHeight="48.0" prefWidth="126.0" text="Actualizar Producto" />
+                        <Button fx:id="productoEliminar" layoutX="487.0" layoutY="574.0" mnemonicParsing="false" onAction="#hacerClickBtnEliminarProducto" prefHeight="44.0" prefWidth="125.0" text="Eliminar Producto" />
+                        <TableView fx:id="tablaProductos" layoutX="16.0" layoutY="411.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="137.0" prefWidth="1040.0">
                            <columns>
                               <TableColumn fx:id="codigoProductoTabla" prefWidth="51.0" text="CODIGO" />
                               <TableColumn fx:id="nombreProductoTabla" prefWidth="78.0" text="PRODUCTO" />
-                              <TableColumn fx:id="descripcionProductoTabla" prefWidth="101.0" text="DESCRIPCION" />
-                              <TableColumn fx:id="valorProductoTabla" minWidth="8.66668701171875" prefWidth="90.0" text="VALOR" />
-                              <TableColumn fx:id="cantidadProductoTabla" minWidth="0.0" prefWidth="94.0" text="CANTIDAD" />
-                              <TableColumn fx:id="tipoProductoTabla" minWidth="0.0" prefWidth="93.0" text="TIPO PRODUCTO" />
-                              <TableColumn fx:id="fechaVencimientoProductoTabla" minWidth="4.00006103515625" prefWidth="92.0" text="FECHA VENCIMIENTO" />
-                              <TableColumn fx:id="codigoAprobacionProductoTabla" minWidth="0.0" prefWidth="99.0" text="COD APROVACION" />
-                              <TableColumn fx:id="temperaturaProductoTabla" minWidth="0.0" prefWidth="88.0" text="TEMP" />
-                              <TableColumn fx:id="fechaEnvasadoProductoTabla" minWidth="4.00006103515625" prefWidth="111.0" text="FECHA ENVASE" />
-                              <TableColumn fx:id="pesoProductoTabla" minWidth="0.0" prefWidth="85.0" text="PESO" />
-                              <TableColumn fx:id="paisOrigenProductoTabla" minWidth="0.0" prefWidth="72.0" text="ORIGEN" />
+                              <TableColumn fx:id="descripcionProductoTabla" prefWidth="86.00003051757812" text="DESCRIPCION" />
+                              <TableColumn fx:id="valorProductoTabla" minWidth="8.66668701171875" prefWidth="60.66668701171875" text="VALOR" />
+                              <TableColumn fx:id="cantidadProductoTabla" minWidth="0.0" prefWidth="72.6666259765625" text="CANTIDAD" />
+                              <TableColumn fx:id="tipoProductoTabla" minWidth="0.0" prefWidth="111.3333740234375" text="TIPO PRODUCTO" />
+                              <TableColumn fx:id="fechaVencimientoProductoTabla" minWidth="4.00006103515625" prefWidth="127.33334350585938" text="FECHA VENCIMIENTO" />
+                              <TableColumn fx:id="codigoAprobacionProductoTabla" minWidth="0.0" prefWidth="131.99993896484375" text="COD APROBACION" />
+                              <TableColumn fx:id="temperaturaProductoTabla" minWidth="0.0" prefWidth="65.3333740234375" text="TEMP" />
+                              <TableColumn fx:id="fechaEnvasadoProductoTabla" minWidth="4.00006103515625" prefWidth="96.0" text="FECHA ENVASE" />
+                              <TableColumn fx:id="pesoProductoTabla" minWidth="0.0" prefWidth="53.33331298828125" text="PESO" />
+                              <TableColumn fx:id="paisOrigenProductoTabla" minWidth="0.0" prefWidth="101.33331298828125" text="ORIGEN" />
                            </columns>
                         </TableView>
 
