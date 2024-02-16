@@ -4,10 +4,13 @@ import java.net.StandardSocketOptions;
 import java.util.ArrayList;
 
 public class Almacen {
+    //Se declaran las variables de tipo Arraylist que almacenara objetos de la clase cliente y lista productos
     private ArrayList<Cliente> listaClientes;
     private ArrayList<Producto> listaProductos;
 
     //Creacion de un almacen con dos ArrayList vacios
+    //Se define un constructor que inicializa las dos listas como ArrayList
+    // vacíos cuando se crea una instancia de la clase Almacen.
     public Almacen() {
         this.listaClientes = new ArrayList<>();
         this.listaProductos = new ArrayList<>();
@@ -39,8 +42,6 @@ public class Almacen {
     public void agregarProducto(Producto producto) {
         listaProductos.add(producto);
     }
-
-
     // Método para eliminar un cliente de la lista
     public void eliminarCliente(Cliente cliente) {
         listaClientes.remove(cliente);
