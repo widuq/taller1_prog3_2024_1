@@ -33,7 +33,7 @@ public class Almacen {
         this.listaProductos = listaProductos;
     }
 
-    // Método para agregar un cliente a la lista
+    // Método para agregar un cliente a  la lista
     public void agregarCliente(Cliente cliente) {
         listaClientes.add(cliente);
     }
