@@ -303,9 +303,6 @@ public class HelloController {
             almacen.eliminarCliente(clienteSeleccionado); //se elimina el cliente de la lista del almacen
             btnclienteActualizar.setDisable(true);
             btnclienteEliminar.setDisable(true);
-        } else {
-            // Mostrar un mensaje de advertencia si no hay un ítem seleccionado
-            System.out.println("No se ha seleccionado ningún cliente para eliminar.");
         }
     }
 
@@ -326,9 +323,6 @@ public class HelloController {
             // Eliminar el ítem seleccionado de la lista observable
             productos.remove(productoSeleccionado); //se elimina el cliente mostrado de la tabla
             almacen.eliminarProducto(productoSeleccionado); //se elimina el cliente de la lista del almacen
-        } else {
-            // Mostrar un mensaje de advertencia si no hay un ítem seleccionado
-            System.out.println("No se ha seleccionado ningún producto para eliminar.");
         }
         productoActualizar.setDisable(true);
         productoEliminar.setDisable(true);
